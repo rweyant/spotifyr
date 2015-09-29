@@ -12,8 +12,10 @@
 search <- function(q,type,...){
 
   query <- list(q=q,type=type,...)
-  search_artist <- GET(url = searchURL,
-                       query=query)
-  response <- content(search_artist)
+  search <- GET(url = searchURL,
+                query=query)
+  check_status_code(status_code(search))
+  response <- content(search)
+  response
 }
 
