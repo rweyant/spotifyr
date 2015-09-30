@@ -32,7 +32,8 @@ get_artists <- function(ids){
 #'
 #' For more information: https://developer.spotify.com/web-api/get-albums-tracks/
 get_artist_albums <- function(id,...){
-  search <- GET(url = paste(artists_url,id,'/albums',sep=''),query=list(...))
+  search <- GET(url = paste(artists_url,id,'/albums',sep=''),
+                query=list(...))
   check_status_code(status_code(search))
   response <- content(search)
   response
@@ -45,8 +46,25 @@ get_artist_albums <- function(id,...){
 #'
 #' For more information: https://developer.spotify.com/web-api/get-artists-top-tracks/
 get_artist_toptracks <- function(id,country){
-  search <- GET(url = paste(artists_url,id,'/top-tracks',sep=''),query=list(country=country))
+  search <- GET(url = paste(artists_url,id,'/top-tracks',sep=''),
+                query=list(country=country))
   check_status_code(status_code(search))
   response <- content(search)
   response
 }
+
+
+#' Get an Artist’s Related Artists
+#' Get Spotify catalog information about artists similar to a given artist.
+#' Similarity is based on analysis of the Spotify community’s listening history.
+#' @param id Required. The Spotify ID for the artist
+#'
+#' For more information: https://developer.spotify.com/web-api/get-related-artists/
+get_artist_relatedartists <- function(id,country){
+  search <- GET(url = paste(artists_url,id,'/related-artists',sep=''))
+  check_status_code(status_code(search))
+  response <- content(search)
+  response
+}
+
+
