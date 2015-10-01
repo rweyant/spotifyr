@@ -6,9 +6,7 @@
 #' For more information: https://developer.spotify.com/web-api/get-album/
 get_album <- function(id,...){
   search <- GET(url = paste(albums_url,id,sep=''),query=list(...))
-  check_status_code(status_code(search))
-  response <- content(search)
-  response
+  get_response_content(search)
 }
 
 #' Get Several Albums
@@ -19,9 +17,7 @@ get_album <- function(id,...){
 get_albums <- function(ids,...){
   query <- list(ids=paste(ids,collapse=','),...)
   search <- GET(url = albums_url,query=query)
-  check_status_code(status_code(search))
-  response <- content(search)
-  response
+  get_response_content(search)
 }
 
 #' Get an Album’s Tracks
@@ -32,7 +28,5 @@ get_albums <- function(ids,...){
 #' For more information: https://developer.spotify.com/web-api/get-albums-tracks/
 get_album_tracks <- function(id,...){
   search <- GET(url = paste(albums_url,id,'/','tracks',sep=''),query=list(...))
-  check_status_code(status_code(search))
-  response <- content(search)
-  response
+  get_response_content(search)
 }

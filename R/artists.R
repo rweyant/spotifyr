@@ -5,9 +5,7 @@
 #' For more information: https://developer.spotify.com/web-api/get-artist/
 get_artist <- function(id){
   search <- GET(url = paste(artists_url,id,sep=''))
-  check_status_code(status_code(search))
-  response <- content(search)
-  response
+  get_response_content(search)
 }
 
 #' Get Several Artists
@@ -18,9 +16,7 @@ get_artist <- function(id){
 get_artists <- function(ids){
   query <- list(ids=paste(ids,collapse=','))
   search <- GET(url = artists_url,query=query)
-  check_status_code(status_code(search))
-  response <- content(search)
-  response
+  get_response_content(search)
 }
 
 
@@ -34,9 +30,7 @@ get_artists <- function(ids){
 get_artist_albums <- function(id,...){
   search <- GET(url = paste(artists_url,id,'/albums',sep=''),
                 query=list(...))
-  check_status_code(status_code(search))
-  response <- content(search)
-  response
+  get_response_content(search)
 }
 
 #' Get an Artist’s Top Tracks
@@ -48,9 +42,7 @@ get_artist_albums <- function(id,...){
 get_artist_toptracks <- function(id,country){
   search <- GET(url = paste(artists_url,id,'/top-tracks',sep=''),
                 query=list(country=country))
-  check_status_code(status_code(search))
-  response <- content(search)
-  response
+  get_response_content(search)
 }
 
 
@@ -62,9 +54,7 @@ get_artist_toptracks <- function(id,country){
 #' For more information: https://developer.spotify.com/web-api/get-related-artists/
 get_artist_relatedartists <- function(id,country){
   search <- GET(url = paste(artists_url,id,'/related-artists',sep=''))
-  check_status_code(status_code(search))
-  response <- content(search)
-  response
+  get_response_content(search)
 }
 
 
