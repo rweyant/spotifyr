@@ -1,7 +1,11 @@
 
+set_credentials <- function(client_id,client_secret){
+  assign('client_id', client_id,envir=.GlobalEnv)
+  assign('client_secret',client_secret,envir=.GlobalEnv)
+
+}
 
 get_tokens <- function(){
-
   # This works for the moment, but would like to use httr
   response <-
     system(
