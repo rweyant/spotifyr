@@ -11,6 +11,11 @@ browse_new_releases_url<- paste(base_url,'/v1/browse/new-releases/',sep='')
 browse_categories_url <- paste(base_url,'/v1/browse/categories/',sep='')
 following_url <- 'https://api.spotify.com/v1/me/following'
 
+all_scopes <- paste('playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private',
+                    'streaming user-follow-modify user-follow-read user-library-modify user-library-read user-read-private',
+                    'user-read-birthdate user-read-email')
+
+
 #' Check API call executed correctly
 get_response_content <- function(response){
   if(status_code(response) == 400) stop('The request had bad syntax or was inherently impossible to be satisfied.')
