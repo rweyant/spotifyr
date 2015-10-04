@@ -45,7 +45,6 @@ unfollow <- function(ids,type=c('artist','user'),access_token=NULL,...){
 }
 
 
-
 #' Check if Current User Follows Artists or Users
 #' Check to see if the current user is following one or more artists or other Spotify users
 #'
@@ -76,6 +75,36 @@ follow_playlist <- function(owner_id,playlist_id,access_token=NULL,...){
 }
 
 
+#' Unfollow a Playlist
+#' Remove the current user as a follower of a playlist.
+#'
+#' For more information: https://developer.spotify.com/web-api/unfollow-playlist/
+unfollow_playlist <- function(owner_id,playlist_id,access_token=NULL,...){
+  ## Credentials not right -- need user creds.
+  if(is.null(access_token)) access_token <- get_tokens()$access_token
+
+  response <- DELETE(url = paste(base_url,'/v1/users/',owner_id,'/playlists/',playlist_id,'/followers',sep=''),
+                  # body=list(...),
+                  add_headers(Authorization=paste('Bearer',access_token),
+                              'Content-Type'='application/json'))
+  get_response_content(response)
+}
+
+#' Check if Users Follow a Playlist
+#' Check to see if one or more Spotify users are following a specified playlist.
+#'
+#' For more information: https://developer.spotify.com/web-api/check-user-following-playlist/
+following_playlist <- sfunction(owner_id,playlist_id,ids,access_token=NULL,...){
+  ## Credentials not right -- need user creds.
+  if(is.null(access_token)) access_token <- get_tokens()$access_token
+
+  response <- GET(url = paste(base_url,'/v1/users/',
+                              owner_id,'/playlists/',
+                              playlist_id,'/followers/contains',sep=''),
+                     query=list(ids=ids),
+                     add_headers(Authorization=paste('Bearer',access_token)))
+  get_response_content(response)
+}
 
 
 
