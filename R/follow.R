@@ -94,7 +94,7 @@ unfollow_playlist <- function(owner_id,playlist_id,access_token=NULL,...){
 #' Check to see if one or more Spotify users are following a specified playlist.
 #'
 #' For more information: https://developer.spotify.com/web-api/check-user-following-playlist/
-following_playlist <- sfunction(owner_id,playlist_id,ids,access_token=NULL,...){
+following_playlist <- function(owner_id,playlist_id,ids,access_token=NULL,...){
   ## Credentials not right -- need user creds.
   if(is.null(access_token)) access_token <- get_tokens()$access_token
 
