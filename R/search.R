@@ -12,7 +12,7 @@
 search <- function(q,type,...){
 
   query <- list(q=q,type=type,...)
-  search <- GET(url = searchURL,
+  search <- GET(url = search_url,
                 query=query)
   check_status_code(status_code(search))
   response <- content(search)
