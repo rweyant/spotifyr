@@ -1,9 +1,10 @@
 Package: spotifyr
 Type: Package
-Title: What the Package Does (Title Case)
+Title: A wrapper for the Spotify API in R
 Version: 0.1
 Date: 2015-09-24
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Authors@R: person("Robert", "Weyant", email = "robert.weyant@gmail.com", role = c("aut", "cre"))
+Description: spotifyr offers access to all aspects of Spotify's API throuh R.
+Requires a developer account (https://developer.spotify.com/).
+License: GNU General Public License v2.0
 LazyData: TRUE
