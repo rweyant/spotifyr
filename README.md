@@ -7,8 +7,10 @@ devtools::install_github('rweyant/spotifyr')
 
 # Authentication
 
+For any usage below, you'll need to have proper credentials from Spotify.  Sign up for an account [here](https://developer.spotify.com/) and [create an app](https://developer.spotify.com/my-applications/#!/applications).
+
 ```{r}
-# First Step
+# First Step: make client_id and client_secret available to other function
 set_credentials(client_id=YOUR_CLIENT_ID,client_secret=YOUR_CLIENT_SECRET)
 ```
 
@@ -38,3 +40,19 @@ refresh_tokens <- refresh_user_token(user_tokens$refresh_token)
 
 # Basic Usage
 
+
+
+## User Profile Data
+```{r,eval=FALSE}
+# Specific user's data
+get_user_profile('rweyant')
+
+# Get the user who is using the application
+get_current_user_profile()
+```
+
+
+## More Resources
+
+- [Spotify API Endpoints](https://developer.spotify.com/web-api/endpoint-reference/)
+- [Source on GitHub](https://github.com/rweyant/spotifyr)
