@@ -5,6 +5,14 @@ Version: 0.1
 Date: 2015-09-24
 Authors@R: person("Robert", "Weyant", email = "robert.weyant@gmail.com", role = c("aut", "cre"))
 Description: spotifyr offers access to all aspects of Spotify's API throuh R.
-Requires a developer account (https://developer.spotify.com/).
+    Requires a developer account (https://developer.spotify.com/).
 License: GNU General Public License v2.0
+Imports: httr,
+    jsonlite,
+    RSelenium
+Depends: httr,
+    jsonlite,
+    RSelenium
+URL: http://www.bertplot.com/visualization/
+BugReport: https://github.com/rweyant/spotifyr/issues
 LazyData: TRUE
