@@ -24,6 +24,7 @@ client_tokens <- get_tokens()
 
 ```{r}
 # Opens Browser window asking for permission to access data
+# Requires Spotify account and for user to login
 user_code <- get_user_code()
 
 # Assigns tokens for later use.
@@ -34,13 +35,29 @@ user_tokens <- get_user_token(user_code)
 # If your access_token expires and you need to refresh your tokens 
 # With no parameters specified, looks for refresh_token in the Global Environment
 refresh_tokens <- refresh_user_token()
+
 # If you want, you can explicitly specify the refresh token
 refresh_tokens <- refresh_user_token(user_tokens$refresh_token)
 ```
 
 # Basic Usage
 
+## Search for Data
 
+Get information, identifiers, images, etc. for artists, albums, songs or playlists that match the query text. 
+No authentication is required for this function.
+
+```{r, eval=FALSE}
+# Search for an artist
+search('slayer',type='artist')
+
+# Get top search result
+search('slayer',type='artist',limit=1)
+
+# Search for an album
+search('Hell Awaits',type='album')
+
+```
 
 ## User Profile Data
 ```{r,eval=FALSE}

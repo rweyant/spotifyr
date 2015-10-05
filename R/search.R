@@ -17,5 +17,6 @@ search <- function(q,type,...){
   check_status_code(status_code(search))
   response <- content(search)
   response
+
 }
 
