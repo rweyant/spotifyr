@@ -5,7 +5,7 @@
 \title{Save Tracks for User
 Save one or more tracks to the current user’s “Your Music” library}
 \usage{
-save_track(ids, access_token = NULL, ...)
+save_track(ids, ...)
 }
 \description{
 For more information: https://developer.spotify.com/web-api/save-tracks-user/

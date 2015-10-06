@@ -5,7 +5,7 @@
 \title{Unfollow Artists or Users
 Remove the current user as a follower of one or more artists or other Spotify users}
 \usage{
-unfollow(ids, type = c("artist", "user"), access_token = NULL, ...)
+unfollow(ids, type = c("artist", "user"), ...)
 }
 \description{
 For more information: https://developer.spotify.com/web-api/unfollow-artists-users/

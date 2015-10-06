@@ -5,7 +5,7 @@
 \title{Get a List of Categories
 Get a list of categories used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).}
 \usage{
-get_categories(access_token = NULL, ...)
+get_categories(...)
 }
 \description{
 For more information: https://developer.spotify.com/web-api/get-list-categories/

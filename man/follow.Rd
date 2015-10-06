@@ -5,7 +5,7 @@
 \title{Follow Artists or Users
 Add the current user as a follower of one or more artists or other Spotify users.}
 \usage{
-follow(ids, type = c("artist", "user"), access_token = NULL, ...)
+follow(ids, type = c("artist", "user"), ...)
 }
 \description{
 For more information: https://developer.spotify.com/web-api/follow-artists-users/

@@ -5,7 +5,7 @@
 \title{Check if Current User Follows Artists or Users
 Check to see if the current user is following one or more artists or other Spotify users}
 \usage{
-following(ids, type = c("artist", "user"), access_token = NULL, ...)
+following(ids, type = c("artist", "user"), ...)
 }
 \description{
 For more information: https://developer.spotify.com/web-api/check-current-user-follows/

@@ -5,7 +5,7 @@
 \title{Unfollow a Playlist
 Remove the current user as a follower of a playlist.}
 \usage{
-unfollow_playlist(owner_id, playlist_id, access_token = NULL, ...)
+unfollow_playlist(owner_id, playlist_id, ...)
 }
 \description{
 For more information: https://developer.spotify.com/web-api/unfollow-playlist/

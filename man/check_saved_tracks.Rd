@@ -5,7 +5,7 @@
 \title{Check User’s Saved Tracks
 Check if one or more tracks is already saved in the current Spotify user’s “Your Music” library.}
 \usage{
-check_saved_tracks(ids, access_token = NULL, ...)
+check_saved_tracks(ids, ...)
 }
 \description{
 For more information: https://developer.spotify.com/web-api/get-users-saved-tracks/

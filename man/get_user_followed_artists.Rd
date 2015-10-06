@@ -5,7 +5,7 @@
 \title{Get User’s Followed Artists
 Get the current user’s followed artists.}
 \usage{
-get_user_followed_artists(access_token = NULL, ...)
+get_user_followed_artists(...)
 }
 \description{
 For more information: https://developer.spotify.com/web-api/get-followed-artists/

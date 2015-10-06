@@ -1,10 +1,11 @@
 
+#' Set credentials to be accessed by all functions
 set_credentials <- function(client_id,client_secret){
   assign('client_id', client_id,envir=.GlobalEnv)
   assign('client_secret',client_secret,envir=.GlobalEnv)
-
 }
 
+#' Get tokens for Client Credential
 get_tokens <- function(){
   # This works for the moment, but would like to use httr
   response <-
@@ -17,9 +18,11 @@ get_tokens <- function(){
   fromJSON(response)
 }
 
-## Does not work yet -- need to figure out browser redirect auth method
+
+#' Get user code for Authorization Code user code
+#' Lauches Selenium Webbrowser to handle process
 get_user_code <- function(){
-  library(RSelenium)
+
   response <- GET(url=authorize_url,
                   query=list(client_id=client_id,
                              response_type='code',
@@ -47,6 +50,7 @@ get_user_code <- function(){
   user_code
 }
 
+#' Using the user_code, generates tokens for user code
 get_user_token <- function(user_code){
 
   # This works for the moment, but would like to use httr
@@ -66,7 +70,7 @@ get_user_token <- function(user_code){
   fromJSON(response)
 }
 
-#' Refresh your token
+#' Refresh your tokens
 refresh_user_token <- function(token=NULL){
 
   if(is.null(token) && !exists('refresh_token')) stop("Need to provide refresh token")

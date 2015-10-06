@@ -5,7 +5,7 @@
 \title{Get a List of Featured Playlists
 Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s “Browse” tab).}
 \usage{
-get_featured_playlists(access_token = NULL, ...)
+get_featured_playlists(...)
 }
 \description{
 For more information: https://developer.spotify.com/web-api/get-list-featured-playlists/

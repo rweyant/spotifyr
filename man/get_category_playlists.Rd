@@ -5,7 +5,7 @@
 \title{Get a Category’s Playlists
 Get a list of Spotify playlists tagged with a particular category.}
 \usage{
-get_category_playlists(category_id, access_token = NULL, ...)
+get_category_playlists(category_id, ...)
 }
 \description{
 For more information: https://developer.spotify.com/web-api/get-categorys-playlists/

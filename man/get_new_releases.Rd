@@ -5,7 +5,7 @@
 \title{Get a List of New Releases
 Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).}
 \usage{
-get_new_releases(access_token = NULL, ...)
+get_new_releases(...)
 }
 \arguments{
 \item{country}{Required if you want any results.

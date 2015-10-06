@@ -5,7 +5,7 @@
 \title{Check if Users Follow a Playlist
 Check to see if one or more Spotify users are following a specified playlist.}
 \usage{
-following_playlist(owner_id, playlist_id, ids, access_token = NULL, ...)
+following_playlist(owner_id, playlist_id, ids, ...)
 }
 \description{
 For more information: https://developer.spotify.com/web-api/check-user-following-playlist/

@@ -1,16 +1,8 @@
-library(httr)
-library(jsonlite)
-library(RSelenium)
-# library(XML)
-# library(RCurl)
-# library(RJSONIO)
-
 
 base_url <- 'https://api.spotify.com'
 
 authorize_url <- 'https://accounts.spotify.com/authorize/'
 search_url <- paste(base_url,'/v1/search',sep='')
-# album_url <- paste(base_url,'/v1/albums',sep='')
 albums_url <- paste(base_url,'/v1/albums/',sep='')
 artists_url <- paste(base_url,'/v1/artists/',sep='')
 browse_featured_playlists_url<- paste(base_url,'/v1/browse/featured-playlists/',sep='')

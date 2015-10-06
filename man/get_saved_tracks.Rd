@@ -5,7 +5,7 @@
 \title{Get a User’s Saved Tracks
 Get a list of the songs saved in the current Spotify user’s “Your Music” library.}
 \usage{
-get_saved_tracks(access_token = NULL, ...)
+get_saved_tracks(...)
 }
 \description{
 For more information: https://developer.spotify.com/web-api/get-users-saved-tracks/

@@ -5,7 +5,7 @@
 \title{Remove User’s Saved Tracks
 Remove one or more tracks from the current user’s “Your Music” library}
 \usage{
-remove_track(ids, access_token = NULL, ...)
+remove_track(ids, ...)
 }
 \description{
 For more information: https://developer.spotify.com/web-api/remove-tracks-user/

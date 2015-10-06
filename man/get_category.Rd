@@ -5,7 +5,7 @@
 \title{Get a Category
 Get a single category used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).}
 \usage{
-get_category(category_id, access_token = NULL, ...)
+get_category(category_id, ...)
 }
 \description{
 For more information: https://developer.spotify.com/web-api/get-category/

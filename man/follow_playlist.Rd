@@ -5,7 +5,7 @@
 \title{Follow a Playlist
 Add the current user as a follower of a playlist}
 \usage{
-follow_playlist(owner_id, playlist_id, access_token = NULL, ...)
+follow_playlist(owner_id, playlist_id, ...)
 }
 \description{
 For more information: https://developer.spotify.com/web-api/follow-playlist/
