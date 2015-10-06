@@ -1,11 +1,11 @@
 # spotifyr: a wrapper for Spotify's API for R users
 
-# Installation
+## Installation
 ```{r}
 devtools::install_github('rweyant/spotifyr')
 ```
 
-# Authentication
+## Authentication
 
 For any usage below, you'll need to have proper credentials from Spotify.  Sign up for an account [here](https://developer.spotify.com/) and [create an app](https://developer.spotify.com/my-applications/#!/applications).
 
@@ -14,13 +14,13 @@ For any usage below, you'll need to have proper credentials from Spotify.  Sign 
 set_credentials(client_id=YOUR_CLIENT_ID,client_secret=YOUR_CLIENT_SECRET)
 ```
 
-## Authenticate with [Client Credentials](https://developer.spotify.com/web-api/authorization-guide/#client_credentials_flow)
+### Authenticate with [Client Credentials](https://developer.spotify.com/web-api/authorization-guide/#client_credentials_flow)
 
 ```{r}
 client_tokens <- get_tokens()
 ```
 
-## Authenticate with [Authorization Code](https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow)
+### Authenticate with [Authorization Code](https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow)
 
 ```{r}
 # Opens Browser window asking for permission to access data
@@ -40,9 +40,9 @@ refresh_tokens <- refresh_user_token()
 refresh_tokens <- refresh_user_token(user_tokens$refresh_token)
 ```
 
-# Basic Usage
+## Basic Usage
 
-## Search for Data
+### Search for Data
 
 Get information, identifiers, images, etc. for artists, albums, songs or playlists that match the query text. 
 No authentication is required for this function.
@@ -59,7 +59,54 @@ search('Hell Awaits',type='album')
 
 ```
 
-## User Profile Data
+### Get Information About Artist
+Search for an artist by Spotify ID and get information about band, genre, images, etc.
+No authentication is required for this function.
+
+```{r,eval=FALSE}
+get_artist('1IQ2e1buppatiN1bxUVkrk')
+
+# Get all albums by Slayer on Spotify
+get_artist_albums('1IQ2e1buppatiN1bxUVkrk')
+
+# Get top tracks of Slayer in the US. Country code required.
+get_artist_toptracks('1IQ2e1buppatiN1bxUVkrk','US')
+
+# Get related artists according to Spotify
+get_artist_relatedartists('1IQ2e1buppatiN1bxUVkrk')
+```
+
+### Access Library information
+
+There are endpoints to access and modify data in user's library
+```{r,eval=FALSE}
+# Get the last 2 tracks saved by the user.
+get_saved_tracks(limit=2)
+```
+
+### Followers
+
+Get information about what artists a user is following, add/remove followers from user, check if a user is following someone
+
+```{r}
+# Get list of all artists a user is following
+get_user_followed_artists()
+
+# Check if my account is being followed.
+following('rweyant',type='user')
+
+# Follow my account
+follow('rweyant',type='user')
+
+# Check if Slayer is being followed.  Use Spotify Artist ID
+following('1IQ2e1buppatiN1bxUVkrk',type='artist')
+
+# Follow Slayer
+follow('1IQ2e1buppatiN1bxUVkrk',type='artist')
+
+```
+
+### User Profile Data
 ```{r,eval=FALSE}
 # Specific user's data
 get_user_profile('rweyant')
@@ -69,7 +116,7 @@ get_current_user_profile()
 ```
 
 
-## More Resources
+### More Resources
 
 - [Spotify API Endpoints](https://developer.spotify.com/web-api/endpoint-reference/)
 - [Source on GitHub](https://github.com/rweyant/spotifyr)
