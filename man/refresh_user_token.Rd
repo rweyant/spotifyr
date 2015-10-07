@@ -6,6 +6,9 @@
 \usage{
 refresh_user_token(token = NULL)
 }
+\arguments{
+\item{token}{default = NULL.  If no token is given, it will look for refresh_token in global environment}
+}
 \description{
 Refresh your tokens
 }

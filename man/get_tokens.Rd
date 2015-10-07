@@ -2,11 +2,13 @@
 % Please edit documentation in R/auth.R
 \name{get_tokens}
 \alias{get_tokens}
-\title{Get tokens for Client Credential}
+\title{Get tokens for Client Credential
+This function looks for client_id and client_secret in the global environment}
 \usage{
 get_tokens()
 }
 \description{
 Get tokens for Client Credential
+This function looks for client_id and client_secret in the global environment
 }
 

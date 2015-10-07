@@ -6,6 +6,9 @@
 \usage{
 get_user_token(user_code)
 }
+\arguments{
+\item{user_code}{user_code from get_user_code() function}
+}
 \description{
 Using the user_code, generates tokens for user code
 }

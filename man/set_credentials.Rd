@@ -6,6 +6,11 @@
 \usage{
 set_credentials(client_id, client_secret)
 }
+\arguments{
+\item{client_id}{the client ID given from Spotify}
+
+\item{client_secret}{the client secret ID given from Spotify}
+}
 \description{
 Set credentials to be accessed by all functions
 }

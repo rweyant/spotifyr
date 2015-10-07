@@ -1,11 +1,15 @@
 
 #' Set credentials to be accessed by all functions
+#'
+#' @param client_id the client ID given from Spotify
+#' @param client_secret the client secret ID given from Spotify
 set_credentials <- function(client_id,client_secret){
   assign('client_id', client_id,envir=.GlobalEnv)
   assign('client_secret',client_secret,envir=.GlobalEnv)
 }
 
 #' Get tokens for Client Credential
+#' This function looks for client_id and client_secret in the global environment
 get_tokens <- function(){
   # This works for the moment, but would like to use httr
   response <-
@@ -21,6 +25,8 @@ get_tokens <- function(){
 
 #' Get user code for Authorization Code user code
 #' Lauches Selenium Webbrowser to handle process
+#' This function looks for client_id and client_secret in the global environment
+#'
 get_user_code <- function(){
 
   response <- GET(url=authorize_url,
@@ -51,6 +57,8 @@ get_user_code <- function(){
 }
 
 #' Using the user_code, generates tokens for user code
+#'
+#' @param user_code user_code from get_user_code() function
 get_user_token <- function(user_code){
 
   # This works for the moment, but would like to use httr
@@ -71,6 +79,8 @@ get_user_token <- function(user_code){
 }
 
 #' Refresh your tokens
+#'
+#' @param token default = NULL.  If no token is given, it will look for refresh_token in global environment
 refresh_user_token <- function(token=NULL){
 
   if(is.null(token) && !exists('refresh_token')) stop("Need to provide refresh token")
