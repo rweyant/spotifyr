@@ -9,10 +9,12 @@ Description: spotifyr offers access to all aspects of Spotify's API throuh R.
 License: GNU General Public License v2.0
 Imports: httr,
     jsonlite,
-    RSelenium
+    RSelenium,
+    stringr
 Depends: httr,
     jsonlite,
-    RSelenium
+    RSelenium,
+    stringr
 URL: http://www.bertplot.com/visualization/
 BugReport: https://github.com/rweyant/spotifyr/issues
 LazyData: TRUE

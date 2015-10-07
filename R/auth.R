@@ -40,6 +40,7 @@ get_user_code <- function(){
   startServer()
 
   webd <- remoteDriver()
+  # webd <- remoteDriver(browserName='chrome')
   x <- webd$open()
   x <- webd$navigate(response$url)
 
