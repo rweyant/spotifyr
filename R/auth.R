@@ -21,7 +21,7 @@ get_tokens <- function(){
             sep=''),
       intern=TRUE)
 
-  parsed_response <- str_split(response,'\\{')[[1]]
+  parsed_response <- str_split(response[length(response)],'\\{')[[1]]
 
   end_response <- paste('{',parsed_response[length(parsed_response)],sep='')
 
