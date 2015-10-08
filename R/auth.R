@@ -20,7 +20,12 @@ get_tokens <- function(){
             '" -d grant_type=client_credentials https://accounts.spotify.com/api/token',
             sep=''),
       intern=TRUE)
-  fromJSON(response)
+
+  parsed_response <- str_split(response,'\\{')[[1]]
+
+  end_response <- paste('{',parsed_response[length(parsed_response)],sep='')
+
+  fromJSON(end_response)
 }
 
 
