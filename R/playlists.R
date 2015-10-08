@@ -53,7 +53,7 @@ create_playlist <- function(user_id,name,...){
 
 
 #' Add Tracks to a Playlist
-#' Add one or more tracks to a user’s playlist
+#' Add one or more tracks to a users playlist
 #'
 #' For more information: https://developer.spotify.com/web-api/add-tracks-to-playlist/
 add_tracks_to_playlist <- function(user_id,playlist_id,uris){

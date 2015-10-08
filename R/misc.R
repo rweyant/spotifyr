@@ -17,6 +17,9 @@ all_scopes <- paste('playlist-read-private playlist-read-collaborative playlist-
                     'user-read-birthdate user-read-email')
 
 
+curl_cmd <- 'curl '
+if(Sys.info()['sysname'] == 'Windows') curl_cmd <- 'curl -k '
+
 #' Check API call executed correctly
 get_response_content <- function(response){
   if(!(status_code(response) %in% c(200,201,204))) stop(paste('\nError Code: ', content(response)$error$status,'\n',content(response)$error$message))

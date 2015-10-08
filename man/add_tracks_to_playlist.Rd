@@ -3,7 +3,7 @@
 \name{add_tracks_to_playlist}
 \alias{add_tracks_to_playlist}
 \title{Add Tracks to a Playlist
-Add one or more tracks to a user’s playlist}
+Add one or more tracks to a users playlist}
 \usage{
 add_tracks_to_playlist(user_id, playlist_id, uris)
 }

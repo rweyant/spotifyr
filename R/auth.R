@@ -8,13 +8,14 @@ set_credentials <- function(client_id,client_secret){
   assign('client_secret',client_secret,envir=.GlobalEnv)
 }
 
+
 #' Get tokens for Client Credential
 #' This function looks for client_id and client_secret in the global environment
 get_tokens <- function(){
   # This works for the moment, but would like to use httr
   response <-
     system(
-      paste('curl -H "Authorization: Basic ',
+      paste(curl_cmd, ' -H "Authorization: Basic ',
             base64(paste(client_id,':',client_secret,sep='')),
             '" -d grant_type=client_credentials https://accounts.spotify.com/api/token',
             sep=''),
@@ -36,11 +37,11 @@ get_user_code <- function(){
                              redirect_uri='http://www.bertplot.com/visualization/'))
 
   unlink(system.file("bin", package = "RSelenium"), recursive = T)
-  checkForServer()
-  startServer()
+  checkForServer(update = TRUE)
+  startServer(log = FALSE, invisible = FALSE)
 
   webd <- remoteDriver()
-  # webd <- remoteDriver(browserName='chrome')
+  # webd <- remoteDriver(remoteServerAddr = "localhost",browserName='chrome',port=4455)
   x <- webd$open()
   x <- webd$navigate(response$url)
 
