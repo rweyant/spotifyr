@@ -1,5 +1,7 @@
 # spotifyr: a wrapper for Spotify's API for R users
 
+**spotifyr** is currently undergoing active testing and improvement.  There are a couple work arounds in place that should allow Windows users to utilize the package, but stability is shaky at best.  If you run in to problems, please post in the issues.
+
 ## Installation
 ```{r}
 devtools::install_github('rweyant/spotifyr')
