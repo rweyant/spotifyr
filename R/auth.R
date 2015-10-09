@@ -78,9 +78,13 @@ get_user_token <- function(user_code){
             sep=''),
       intern=TRUE)
 
+  parsed_response <- str_split(response[length(response)],'\\{')[[1]]
+  end_response <- paste('{',parsed_response[length(parsed_response)],sep='')
+
+
   # Make accessible globally
-  assign('access_token',fromJSON(response)$access_token,envir = .GlobalEnv)
-  assign('refresh_token',fromJSON(response)$refresh_token,envir = .GlobalEnv)
+  assign('access_token',fromJSON(end_response)$access_token,envir = .GlobalEnv)
+  assign('refresh_token',fromJSON(end_response)$refresh_token,envir = .GlobalEnv)
 
   # Return Object
   fromJSON(response)
