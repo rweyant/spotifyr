@@ -71,7 +71,7 @@ get_user_token <- function(user_code){
   # This works for the moment, but would like to use httr
   response <-
     system(
-      paste('curl -H "Authorization: Basic ',
+      paste(curl_cmd,' -H "Authorization: Basic ',
             base64(paste(client_id,':',client_secret,sep='')),
             '" -d grant_type=authorization_code -d code=',user_code,
             ' -d redirect_uri=http://www.bertplot.com/visualization/ https://accounts.spotify.com/api/token',
@@ -80,6 +80,7 @@ get_user_token <- function(user_code){
 
   # Make accessible globally
   assign('access_token',fromJSON(response)$access_token,envir = .GlobalEnv)
+  assign('refresh_token',fromJSON(response)$refresh_token,envir = .GlobalEnv)
 
   # Return Object
   fromJSON(response)
@@ -95,7 +96,7 @@ refresh_user_token <- function(token=NULL){
 
   response <-
     system(
-      paste('curl -H "Authorization: Basic ',
+      paste(curl_cmd, ' -H "Authorization: Basic ',
             base64(paste(client_id,':',client_secret,sep='')),
             '" -d grant_type=refresh_token -d code=',user_code,
             ' -d refresh_token=',token,
@@ -105,7 +106,7 @@ refresh_user_token <- function(token=NULL){
 
   # Make accessible globally
   assign('access_token',fromJSON(response)$access_token,envir = .GlobalEnv)
-  assign('refresh_token',fromJSON(response)$refresh_token,envir = .GlobalEnv)
+  # assign('refresh_token',fromJSON(response)$refresh_token,envir = .GlobalEnv)
 
   # Return Object
   fromJSON(response)
