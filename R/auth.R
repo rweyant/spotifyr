@@ -42,17 +42,18 @@ get_user_code <- function(){
                              redirect_uri='http://www.bertplot.com/visualization/'))
 
   unlink(system.file("bin", package = "RSelenium"), recursive = T)
-  checkForServer(update = TRUE)
+  checkForServer()
   startServer(log = FALSE, invisible = FALSE)
 
   webd <- remoteDriver()
+  Sys.sleep(3)
   # webd <- remoteDriver(remoteServerAddr = "localhost",browserName='chrome',port=4455)
   x <- webd$open()
   x <- webd$navigate(response$url)
 
   ## Need to wait for next page
   ## Probably a better way to do this.
-  while(str_detect(webd$getCurrentUrl()[[1]],'accounts.spotify.com')) Sys.sleep(3)
+  while(str_detect(webd$getCurrentUrl()[[1]],'accounts.spotify.com')) Sys.sleep(2)
 
   user_code <- str_split(webd$getCurrentUrl()[[1]],pattern='code=')[[1]][2]
 
