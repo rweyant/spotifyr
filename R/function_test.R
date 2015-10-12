@@ -1,5 +1,3 @@
-library(spotifyr)
-
 
 auth_test <- function(){
   cat('Testing get_tokens()\n')
@@ -39,8 +37,5 @@ artist_test <- function(){
 
   cat('Testing get_artist_relatedartists()\n')
   slayer_related <- get_artist_relatedartists(id1)
-
-
-
 
 }
