@@ -103,8 +103,7 @@ refresh_user_token <- function(token=NULL){
     system(
       paste(curl_cmd, ' -H "Authorization: Basic ',
             base64(paste(client_id,':',client_secret,sep='')),
-            '" -d grant_type=refresh_token -d code=',user_code,
-            ' -d refresh_token=',token,
+            '" -d grant_type=refresh_token -d refresh_token=',token,
             ' https://accounts.spotify.com/api/token',
             sep=''),
       intern=TRUE)
