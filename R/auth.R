@@ -12,20 +12,13 @@ set_credentials <- function(client_id,client_secret){
 #' Get tokens for Client Credential
 #' This function looks for client_id and client_secret in the global environment
 get_tokens <- function(){
-  # This works for the moment, but would like to use httr
-  response <-
-    system(
-      paste(curl_cmd, ' -H "Authorization: Basic ',
-            base64(paste(client_id,':',client_secret,sep='')),
-            '" -d grant_type=client_credentials https://accounts.spotify.com/api/token',
-            sep=''),
-      intern=TRUE)
+  response <- POST('https://accounts.spotify.com/api/token',
+                   accept_json(),
+                   authenticate(client_id,client_secret),
+                   body=list(grant_type='client_credentials'),
+                   encode='form')
 
-  parsed_response <- str_split(response[length(response)],'\\{')[[1]]
-
-  end_response <- paste('{',parsed_response[length(parsed_response)],sep='')
-
-  fromJSON(end_response)
+  get_response_content(response)
 }
 
 
@@ -69,26 +62,22 @@ get_user_code <- function(){
 #' @param user_code user_code from get_user_code() function
 get_user_token <- function(user_code){
 
-  # This works for the moment, but would like to use httr
-  response <-
-    system(
-      paste(curl_cmd,' -H "Authorization: Basic ',
-            base64(paste(client_id,':',client_secret,sep='')),
-            '" -d grant_type=authorization_code -d code=',user_code,
-            ' -d redirect_uri=http://www.bertplot.com/visualization/ https://accounts.spotify.com/api/token',
-            sep=''),
-      intern=TRUE)
+  response <- POST('https://accounts.spotify.com/api/token',
+                   accept_json(),
+                   authenticate(client_id,client_secret),
+                   body=list(grant_type='authorization_code',
+                             code=user_code,
+                             redirect_uri='http://www.bertplot.com/visualization/'),
+                   encode='form')
 
-  parsed_response <- str_split(response[length(response)],'\\{')[[1]]
-  end_response <- paste('{',parsed_response[length(parsed_response)],sep='')
-
+  content <- get_response_content(response)
 
   # Make accessible globally
-  assign('access_token',fromJSON(end_response)$access_token,envir = .GlobalEnv)
-  assign('refresh_token',fromJSON(end_response)$refresh_token,envir = .GlobalEnv)
+  assign('access_token',content$access_token,envir = .GlobalEnv)
+  assign('refresh_token',content$refresh_token,envir = .GlobalEnv)
 
   # Return Object
-  fromJSON(end_response)
+  content
 }
 
 #' Refresh your tokens
@@ -99,22 +88,18 @@ refresh_user_token <- function(token=NULL){
   if(is.null(token) && !exists('refresh_token')) stop("Need to provide refresh token")
   if(is.null(token) && exists('refresh_token')) token <- refresh_token
 
-  response <-
-    system(
-      paste(curl_cmd, ' -H "Authorization: Basic ',
-            base64(paste(client_id,':',client_secret,sep='')),
-            '" -d grant_type=refresh_token -d refresh_token=',token,
-            ' https://accounts.spotify.com/api/token',
-            sep=''),
-      intern=TRUE)
+  response <- POST('https://accounts.spotify.com/api/token',
+                   accept_json(),
+                   authenticate(client_id,client_secret),
+                   body=list(grant_type='refresh_token',
+                             refresh_token=token,
+                             redirect_uri='http://www.bertplot.com/visualization/'),
+                   encode='form')
 
-
-  parsed_response <- str_split(response[length(response)],'\\{')[[1]]
-  end_response <- paste('{',parsed_response[length(parsed_response)],sep='')
+  content <- get_response_content(response)
 
   # Make accessible globally
-  assign('access_token',fromJSON(end_response)$access_token,envir = .GlobalEnv)
-  # assign('refresh_token',fromJSON(response)$refresh_token,envir = .GlobalEnv)
+  assign('access_token',content$access_token,envir = .GlobalEnv)
 
   # Return Object
   fromJSON(end_response)
