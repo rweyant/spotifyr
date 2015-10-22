@@ -84,8 +84,12 @@ remove_tracks_from_playlist <- function(user_id,playlist_id,tracks){
 
   response <- DELETE(url = paste(user_url,'/',user_id,'/playlists/',playlist_id,'/tracks',sep=''),
                    body=list(tracks=data.frame(uri=uris)),
-                   add_headers(Authorization=paste('Bearer',access_token),
-                               'Content-Type'='application/json'),encode='json')
+                   # body=list('tracks'=data.frame(uri='6NwbeybX6TDtXlpXvnUOZC')),
+                   # body=list('tracks'=test_id),
+                   add_headers(Authorization=paste('Bearer',access_token)),
+                   # encode='json',
+                   accept_json(),
+                   verbose())
   get_response_content(response)
 }
 

@@ -28,4 +28,26 @@ get_response_content <- function(response){
 }
 
 
+####
 
+extract_artist <- function(artist) {
+  artist$genre <- paste(artist$genres,collapse='|')
+  artist[c('name','id','genre','popularity','followers','href','type','uri')] %>% unlist
+}
+extract_album <- function(album) {
+  album$artist <- paste(sapply(album$artists,function(x) x$name),collapse='|')
+  album$genre <- paste(album$genres,collapse='|')
+  album$ntracks <- length(album$tracks$items)
+  album[c('name','id','artist','genre','ntracks','release_date','popularity','href','type','uri','external_ids','external_urls')] %>% unlist
+}
+
+simplify_result <- function(result,type='artists'){
+  if(type=='artists') x <- sapply(result[[type]],extract_artist)
+  if(type=='albums') x <- sapply(result[[type]],extract_album)
+
+  as.data.frame(t(x))
+}
+
+simplify_result(test_artists,'artists')
+simplify_result(test_albums,'albums')
+test_albums$albums[[1]][sapply(test_albums$albums[[1]],length)==1]
