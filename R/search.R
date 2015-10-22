@@ -11,10 +11,8 @@
 #' playlist, and track
 search <- function(q,type,...){
 
-  query <- list(q=q,type=type,...)
   response <- GET(url = search_url,
-                query=query)
+                query=list(q=q,type=type,...))
   get_response_content(response)
-
 }
 

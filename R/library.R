@@ -47,6 +47,6 @@ check_saved_tracks <- function(ids,...){
   response <- GET(url = paste(library_url,'/contains',sep=''),
                   query=list(ids=ids),
                   add_headers(Authorization=paste('Bearer',access_token)))
-  get_response_content(response)
+  get_response_content(response)[[1]]
 }
 

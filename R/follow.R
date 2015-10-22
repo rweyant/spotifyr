@@ -91,8 +91,8 @@ following_playlist <- function(owner_id,playlist_id,ids,...){
   response <- GET(url = paste(base_url,'/v1/users/',
                               owner_id,'/playlists/',
                               playlist_id,'/followers/contains',sep=''),
-                     query=list(ids=ids),
+                     query=list(ids=paste(ids,collapse=',')),
                      add_headers(Authorization=paste('Bearer',access_token)))
-  get_response_content(response)
+  unlist(get_response_content(response))
 }
 

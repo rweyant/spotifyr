@@ -76,7 +76,6 @@ get_user_token <- function(user_code){
   assign('access_token',content$access_token,envir = .GlobalEnv)
   assign('refresh_token',content$refresh_token,envir = .GlobalEnv)
 
-  # Return Object
   content
 }
 
@@ -101,7 +100,5 @@ refresh_user_token <- function(token=NULL){
   # Make accessible globally
   assign('access_token',content$access_token,envir = .GlobalEnv)
 
-  # Return Object
-  fromJSON(end_response)
-
+  content
 }

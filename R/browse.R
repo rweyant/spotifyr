@@ -4,10 +4,10 @@
 #' For more information: https://developer.spotify.com/web-api/get-list-featured-playlists/
 get_featured_playlists <- function(...){
 
-  search <- GET(url = browse_featured_playlists_url,
+  response <- GET(url = browse_featured_playlists_url,
                 query=list(...),
                 add_headers(Authorization=paste('Bearer',access_token)))
-  get_response_content(search)
+  get_response_content(response)
 }
 
 
@@ -19,12 +19,12 @@ get_featured_playlists <- function(...){
 #' returned items to be relevant to a particular country.
 #'
 #' For more information: https://developer.spotify.com/web-api/get-list-new-releases/
-get_new_releases <- function(...){
+get_new_releases <- function(country,...){
 
-  search <- GET(url = browse_new_releases_url,
-                query=list(...),
+  response <- GET(url = browse_new_releases_url,
+                query=list(country=country,...),
                 add_headers(Authorization=paste('Bearer',access_token)))
-  get_response_content(search)
+  get_response_content(response)
 }
 
 #' Get a List of Categories
@@ -33,10 +33,10 @@ get_new_releases <- function(...){
 #' For more information: https://developer.spotify.com/web-api/get-list-categories/
 get_categories <- function(...){
 
-  search <- GET(url = browse_categories_url,
+  response <- GET(url = browse_categories_url,
                 query=list(...),
                 add_headers(Authorization=paste('Bearer',access_token)))
-  get_response_content(search)
+  get_response_content(response)
 }
 
 
@@ -46,10 +46,10 @@ get_categories <- function(...){
 #' For more information: https://developer.spotify.com/web-api/get-category/
 get_category <- function(category_id,...){
 
-  search <- GET(url = paste(browse_categories_url,category_id,sep=''),
+  response <- GET(url = paste(browse_categories_url,category_id,sep=''),
                 query=list(...),
                 add_headers(Authorization=paste('Bearer',access_token)))
-  get_response_content(search)
+  get_response_content(response)
 }
 
 #' Get a Category’s Playlists
@@ -58,9 +58,9 @@ get_category <- function(category_id,...){
 #' For more information: https://developer.spotify.com/web-api/get-categorys-playlists/
 get_category_playlists <- function(category_id,...){
 
-  search <- GET(url = paste(browse_categories_url,category_id,'/playlists',sep=''),
+  response <- GET(url = paste(browse_categories_url,category_id,'/playlists',sep=''),
                 query=list(...),
                 add_headers(Authorization=paste('Bearer',access_token)))
-  get_response_content(search)
+  get_response_content(response)
 }
 
