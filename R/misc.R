@@ -38,16 +38,29 @@ extract_album <- function(album) {
   album$artist <- paste(sapply(album$artists,function(x) x$name),collapse='|')
   album$genre <- paste(album$genres,collapse='|')
   album$ntracks <- length(album$tracks$items)
-  album[c('name','id','artist','genre','ntracks','release_date','popularity','href','type','uri','external_ids','external_urls')] %>% unlist
+  album[c('name','id','uri','artist','genre','ntracks','release_date','popularity','href','type')] %>% unlist
 }
+extract_song <- function(song){
+  song_item <- song$track
+  song_item$artist <- paste(sapply(song$artists,function(x) x$name),collapse='|')
+  song_item$album_name <- song_item$album$name
+  song_item$album_id <- song_item$album$id
+  song_item[c('name','id','uri','duration_ms','artist','album_name','album_id','popularity','href','track_number','type')]  %>% unlist
+}
+extract_category <- function(category)  category[c('name','id','href')] %>% unlist
 
 simplify_result <- function(result,type='artists'){
   if(type=='artists') x <- sapply(result[[type]],extract_artist)
   if(type=='albums') x <- sapply(result[[type]],extract_album)
-
+  if(type=='songs' && 'items' %in% names(result)) x <- sapply(result[['items']],extract_song)
+  if((type=='categories')) x <- sapply(result[[type]][['items']],extract_category)
   as.data.frame(t(x))
 }
 
 simplify_result(test_artists,'artists')
 simplify_result(test_albums,'albums')
+simplify_result(saved_tracks,'songs')
+
+
+
 test_albums$albums[[1]][sapply(test_albums$albums[[1]],length)==1]

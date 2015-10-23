@@ -24,10 +24,10 @@ artist_test <- function(){
   id2 <- artists$artists$items[[2]]$id
 
   cat('Testing get_artist()\n')
-  get_artist(id1)
+  test_artist <- get_artist(id1)
 
   cat('Testing get_artists()\n')
-  get_artists(ids = c(id1,id2))
+  test_artists <- get_artists(ids = c(id1,id2))
 
   cat('Testing get_artist_albums()\n')
   get_artist_albums(id1)
@@ -70,10 +70,10 @@ albums_test <- function(){
   test_album_id2 <- album_ids$items[[2]]$id
 
   cat('Testing get_album()\n')
-  get_album(test_album_id1)
+  test_album <- get_album(test_album_id1)
 
   cat('Testing get_albums()\n')
-  get_albums(ids=c(test_album_id1,test_album_id2))
+  test_albums <- get_albums(ids=c(test_album_id1,test_album_id2))
 
   cat('Testing get_album_tracks()\n')
   get_album_tracks(test_album_id1)
