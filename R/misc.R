@@ -49,6 +49,10 @@ extract_song <- function(song){
 }
 extract_category <- function(category)  category[c('name','id','href')] %>% unlist
 
+extract_playlist <- function(playlist){
+  playlist[c()]
+}
+
 simplify_result <- function(result,type='artists'){
   if(type=='artists') x <- sapply(result[[type]],extract_artist)
   if(type=='albums') x <- sapply(result[[type]],extract_album)
@@ -56,11 +60,3 @@ simplify_result <- function(result,type='artists'){
   if((type=='categories')) x <- sapply(result[[type]][['items']],extract_category)
   as.data.frame(t(x))
 }
-
-simplify_result(test_artists,'artists')
-simplify_result(test_albums,'albums')
-simplify_result(saved_tracks,'songs')
-
-
-
-test_albums$albums[[1]][sapply(test_albums$albums[[1]],length)==1]
