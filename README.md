@@ -1,10 +1,14 @@
 # spotifyr: a wrapper for Spotify's API for R users
 
-**spotifyr** is currently undergoing active testing and improvement.  It currently requires [Firefox](https://www.mozilla.org/en-US/firefox/new/) for the full [authorization code flow](https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow).  Chrome and IE will eventually be supported, but are not yet.  All data from endpoints is converted to lists.  Some of the objects (artists, albums, playlists) have helper functions to conver to `data.frame`, but not all yet, and this is the next major development plan.
+**spotifyr** is currently undergoing active testing and improvement.  
+
+It currently launches [Firefox](https://www.mozilla.org/en-US/firefox/new/) through [RSelenium](https://github.com/ropensci/RSelenium) for the full [authorization code flow](https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow).  Chrome and IE will eventually be supported, but are not yet.  All data from endpoints is converted to lists.  If you just want access to the public endpoints, this is not necessary.  
+
+Some of the objects (artists, albums, playlists) have helper functions to conver to `data.frame`, but not all yet, and this is the next major development plan.
 
 ## Installation
 
-Requires [Firefox](https://www.mozilla.org/en-US/firefox/new/) to authenticate for any of the endpoints that operate on user data.
+Requires [Firefox](https://www.mozilla.org/en-US/firefox/new/) for initial authentication for any of the endpoints that operate on user data.
 
 ```{r}
 devtools::install_github('rweyant/spotifyr')
