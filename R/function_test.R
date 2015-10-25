@@ -113,7 +113,7 @@ follow_test <- function(){
   cat('Following kraigrs? ', following('kraigrs',type='user'),'\n')
 
 
-  test_artist_id <- artists$artists$items[[1]]$id
+  test_artist_id <- followed_artists$artists$items[[1]]$id
   cat('Following Slayer? ', following(test_artist_id,type='artist'),'\n')
   cat('Testing artist follow()\n')
   follow(test_artist_id,type='artist')
@@ -125,8 +125,8 @@ follow_test <- function(){
 
 
   ## Get Categories/playlists
-  category <- get_category(categories$categories$items[[18]]$id)
-  playlists <- get_category_playlists(categories$categories$items[[18]]$id,limit=50)
+  category <- get_category('metal')
+  playlists <- get_category_playlists('metal',limit=50)
   test_owner_id <- playlists$playlists$items[[1]]$owner$id
   test_playlist_id <- playlists$playlists$items[[1]]$id
   ###
