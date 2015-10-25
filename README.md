@@ -1,8 +1,11 @@
 # spotifyr: a wrapper for Spotify's API for R users
 
-**spotifyr** is currently undergoing active testing and improvement.  There are a couple work arounds in place that should allow Windows users to utilize the package, but stability is shaky at best.  If you run in to problems, please post in the issues.
+**spotifyr** is currently undergoing active testing and improvement.  It currently requires [Firefox](https://www.mozilla.org/en-US/firefox/new/) for the full [authorization code flow](https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow).  Chrome and IE will eventually be supported, but are not yet.  All data from endpoints is converted to lists.  Some of the objects (artists, albums, playlists) have helper functions to conver to `data.frame`, but not all yet, and this is the next major development plan.
 
 ## Installation
+
+Requires [Firefox](https://www.mozilla.org/en-US/firefox/new/) to authenticate for any of the endpoints that operate on user data.
+
 ```{r}
 devtools::install_github('rweyant/spotifyr')
 ```
@@ -50,6 +53,7 @@ Get information, identifiers, images, etc. for artists, albums, songs or playlis
 No authentication is required for this function.
 
 ```{r, eval=FALSE}
+
 # Search for an artist
 search('slayer',type='artist')
 
@@ -57,7 +61,7 @@ search('slayer',type='artist')
 search('slayer',type='artist',limit=1)
 
 # Search for an album
-search('Hell Awaits',type='album')
+search('South Of Heaven',type='album')
 
 ```
 
@@ -74,8 +78,11 @@ get_artist_albums('1IQ2e1buppatiN1bxUVkrk')
 # Get top tracks of Slayer in the US. Country code required.
 get_artist_toptracks('1IQ2e1buppatiN1bxUVkrk','US')
 
-# Get related artists according to Spotify
+# Get related artists according to Spotify in list 
 get_artist_relatedartists('1IQ2e1buppatiN1bxUVkrk')
+
+# Get related artists according to Spotify and simplify to a data.frame
+simplify_result(get_artist_relatedartists('1IQ2e1buppatiN1bxUVkrk'),type='artists')
 ```
 
 ### Access Library information
