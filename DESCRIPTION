@@ -10,11 +10,13 @@ License: GNU General Public License v2.0
 Imports: httr,
     jsonlite,
     RSelenium,
-    stringr
+    stringr,
+    stringi
 Depends: httr,
     jsonlite,
     RSelenium,
-    stringr
+    stringr,
+    stringi
 URL: http://www.bertplot.com/visualization/
 BugReport: https://github.com/rweyant/spotifyr/issues
 LazyData: TRUE
