@@ -4,7 +4,7 @@
 #' For more information: https://developer.spotify.com/web-api/get-followed-artists/
 get_user_followed_artists <- function(...){
   response <- GET(url = following_url,
-                query=list(type='artist'),
+                query=list(type='artist',...),
                 add_headers(Authorization=paste('Bearer',access_token)))
   get_response_content(response)
 }

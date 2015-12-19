@@ -54,9 +54,16 @@ extract_playlist <- function(playlist){
 }
 
 simplify_result <- function(result,type='artists'){
-  if(type=='artists') x <- sapply(result[[type]],extract_artist)
-  if(type=='albums') x <- sapply(result[[type]],extract_album)
+  if(type=='artists'){
+    if(type %in% names(result)) x <- sapply(result[[type]],extract_artist)
+    else if ('items' %in% names(result)) x <- sapply(result[['items']],extract_artist)
+    else if (is.null(names(result) ) ) x <- sapply(result,extract_artist)
+  }
+  if(type=='albums'){
+    if(type %in% names(result)) x <- sapply(result[[type]],extract_album)
+    else if ('items' %in% names(result)) x <- sapply(result[['items']],extract_album)
+  }
   if(type=='songs' && 'items' %in% names(result)) x <- sapply(result[['items']],extract_song)
   if((type=='categories')) x <- sapply(result[[type]][['items']],extract_category)
-  as.data.frame(t(x))
+  as.data.frame(t(x),stringsAsFactors = FALSE)
 }
