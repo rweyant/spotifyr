@@ -40,13 +40,7 @@ extract_album <- function(album) {
   album$ntracks <- length(album$tracks$items)
   album[c('name','id','uri','artist','genre','ntracks','release_date','popularity','href','type')] %>% unlist
 }
-extract_song <- function(song){
-  song_item <- song$track
-  song_item$artist <- paste(sapply(song$artists,function(x) x$name),collapse='|')
-  song_item$album_name <- song_item$album$name
-  song_item$album_id <- song_item$album$id
-  song_item[c('name','id','uri','duration_ms','artist','album_name','album_id','popularity','href','track_number','type')]  %>% unlist
-}
+
 extract_category <- function(category)  category[c('name','id','href')] %>% unlist
 
 extract_playlist <- function(playlist){
@@ -54,16 +48,34 @@ extract_playlist <- function(playlist){
 }
 
 simplify_result <- function(result,type='artists'){
+  # Improve here. Is there a good way to create a unified simplification? 
+  # Class usemethod...
   if(type=='artists'){
     if(type %in% names(result)) x <- sapply(result[[type]],extract_artist)
     else if ('items' %in% names(result)) x <- sapply(result[['items']],extract_artist)
     else if (is.null(names(result) ) ) x <- sapply(result,extract_artist)
-  }
-  if(type=='albums'){
+  } else if(type=='albums'){
     if(type %in% names(result)) x <- sapply(result[[type]],extract_album)
     else if ('items' %in% names(result)) x <- sapply(result[['items']],extract_album)
-  }
-  if(type=='songs' && 'items' %in% names(result)) x <- sapply(result[['items']],extract_song)
-  if((type=='categories')) x <- sapply(result[[type]][['items']],extract_category)
+  } else if(type=='songs' && 'items' %in% names(result)){
+    return(ldply(result[['items']],data.frame))
+  } else if(type=='songs' && 'tracks' %in% names(result)){
+    return(ldply(result[['tracks']],data.frame))
+  } else if((type=='categories')) x <- sapply(result[[type]][['items']],extract_category)
+  else x <- NULL
+  
   as.data.frame(t(x),stringsAsFactors = FALSE)
+}
+
+
+###########################################
+# Old functions not ready to part with    #
+###########################################
+old_extract_song <- function(song){
+  if('track' %in% names(song)) song_item <- song$track
+  if('artists' %in% names(song)) song_item <- song
+  song_item$artist <- paste(sapply(song_item$artists,function(x) x$name),collapse='|')
+  song_item$album_name <- song_item$album$name
+  song_item$album_id <- song_item$album$id
+  song_item[c('name','id','uri','duration_ms','artist','album_name','album_id','popularity','href','track_number','type')]  %>% unlist
 }
