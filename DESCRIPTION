@@ -11,12 +11,14 @@ Imports: httr,
     jsonlite,
     RSelenium,
     stringr,
-    stringi
+    stringi,
+    plyr
 Depends: httr,
     jsonlite,
     RSelenium,
     stringr,
-    stringi
+    stringi,
+    plyr
 URL: http://www.bertplot.com/visualization/
 BugReport: https://github.com/rweyant/spotifyr/issues
 LazyData: TRUE
