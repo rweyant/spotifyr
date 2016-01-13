@@ -49,7 +49,6 @@ extract_playlist <- function(playlist){
 
 simplify_result <- function(result,type='artists'){
   # Improve here. Is there a good way to create a unified simplification? 
-  # Class usemethod...
   if(type=='artists'){
     if(type %in% names(result)) x <- sapply(result[[type]],extract_artist)
     else if ('items' %in% names(result)) x <- sapply(result[['items']],extract_artist)
