@@ -3,9 +3,10 @@
 #'
 #' @param client_id the client ID given from Spotify
 #' @param client_secret the client secret ID given from Spotify
-set_credentials <- function(client_id,client_secret){
+set_credentials <- function(client_id,client_secret,client_redirect_uri){
   assign('client_id', client_id,envir=.GlobalEnv)
   assign('client_secret',client_secret,envir=.GlobalEnv)
+  assign('client_redirect_uri',client_redirect_uri,envir=.GlobalEnv)
 }
 
 
@@ -67,7 +68,7 @@ get_user_token <- function(user_code){
                    authenticate(client_id,client_secret),
                    body=list(grant_type='authorization_code',
                              code=user_code,
-                             redirect_uri='http://www.bertplot.com/visualization/'),
+                             redirect_uri=client_redirect_uri),
                    encode='form')
 
   content <- get_response_content(response)
