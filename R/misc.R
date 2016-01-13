@@ -46,21 +46,28 @@ extract_playlist <- function(playlist){
 
 
 simplify_result <- function(result,type='artists'){
-  # Improve here. Move to S3.
-  if(type=='artists') simplify_result.artist(result)
-  if(type=='albums'){
-    if(type %in% names(result)) x <- sapply(result[[type]],extract_album)
-    else if ('items' %in% names(result)) x <- sapply(result[['items']],extract_album)
-  } else if(type=='songs' && 'items' %in% names(result)){
-    return(ldply(result[['items']],data.frame))
-  } else if(type=='songs' && 'tracks' %in% names(result)){
-    return(ldply(result[['tracks']],data.frame))
-  } else if((type=='categories')) x <- sapply(result[[type]][['items']],extract_category)
-  else x <- NULL
 
-  as.data.frame(t(x),stringsAsFactors = FALSE)
+  # Improve here. Move to S3.
+  if(type=='artists') df <- simplify_result.artist(result)
+
+  if(type=='songs') df <- simplify_result.song(result)
+
+  if(type=='albums'){
+    if(type %in% names(result)) df <- sapply(result[[type]],extract_album)
+    else if ('items' %in% names(result)) df <- sapply(result[['items']],extract_album)
+  }
+  if((type=='categories')) df <- sapply(result[[type]][['items']],extract_category)
+
+  as.data.frame(df,stringsAsFactors = FALSE)
 }
 
+
+
+simplify_result.song <- function(x){
+  if ('items' %in% names(x)) tmp <-  x[['items']]
+  if ('tracks' %in% names(x)) tmp <- x[['tracks']]
+  ldply(tmp,data.frame)
+}
 
 simplify_result.artist <- function(x){
   if('artists' %in% names(x)) tmp <- x[['artists']][['items']]
