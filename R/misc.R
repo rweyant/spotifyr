@@ -30,10 +30,7 @@ get_response_content <- function(response){
 
 ####
 
-extract_artist <- function(artist) {
-  artist$genre <- paste(artist$genres,collapse='|')
-  artist[c('name','id','genre','popularity','followers','href','type','uri')] %>% unlist
-}
+
 extract_album <- function(album) {
   album$artist <- paste(sapply(album$artists,function(x) x$name),collapse='|')
   album$genre <- paste(album$genres,collapse='|')
@@ -47,13 +44,11 @@ extract_playlist <- function(playlist){
   playlist[c()]
 }
 
+
 simplify_result <- function(result,type='artists'){
-  # Improve here. Is there a good way to create a unified simplification? 
-  if(type=='artists'){
-    if(type %in% names(result)) x <- sapply(result[[type]],extract_artist)
-    else if ('items' %in% names(result)) x <- sapply(result[['items']],extract_artist)
-    else if (is.null(names(result) ) ) x <- sapply(result,extract_artist)
-  } else if(type=='albums'){
+  # Improve here. Move to S3.
+  if(type=='artists') simplify_result.artist(result)
+  if(type=='albums'){
     if(type %in% names(result)) x <- sapply(result[[type]],extract_album)
     else if ('items' %in% names(result)) x <- sapply(result[['items']],extract_album)
   } else if(type=='songs' && 'items' %in% names(result)){
@@ -62,8 +57,41 @@ simplify_result <- function(result,type='artists'){
     return(ldply(result[['tracks']],data.frame))
   } else if((type=='categories')) x <- sapply(result[[type]][['items']],extract_category)
   else x <- NULL
-  
+
   as.data.frame(t(x),stringsAsFactors = FALSE)
+}
+
+
+simplify_result.artist <- function(x){
+  if('artists' %in% names(x)) tmp <- x[['artists']][['items']]
+  else if ('items' %in% names(x)) tmp <- x[['items']]
+  else if (is.null(names(x))) tmp <- x
+
+  ldply(
+    lapply(tmp,function(artist){
+      artist$genre <- paste(artist$genres,collapse='|')
+      artist$followers <- artist$followers$total
+      artist[c('name','id','genre','popularity','followers','href','type','uri')]
+    }),
+    data.frame
+  )
+}
+
+## Hmm
+simplify_result.album <- function(x){
+  if('albums' %in% names(x)){
+    tmp <- x[['albums']][['items']]
+  } else if ('items' %in% names(x)) tmp <- x[['items']]
+
+  ldply(
+    lapply(tmp,function(album){
+      album$artist <- paste(sapply(album$artists,function(x) x$name),collapse='|')
+      album$genre <- paste(album$genres,collapse='|')
+      album$ntracks <- length(album$tracks$items)
+      album[c('name','id','uri','artist','genre','ntracks','href','type')]
+    }),
+    data.frame
+  )
 }
 
 
@@ -77,4 +105,8 @@ old_extract_song <- function(song){
   song_item$album_name <- song_item$album$name
   song_item$album_id <- song_item$album$id
   song_item[c('name','id','uri','duration_ms','artist','album_name','album_id','popularity','href','track_number','type')]  %>% unlist
+}
+extract_artist <- function(artist) {
+  artist$genre <- paste(artist$genres,collapse='|')
+  artist[c('name','id','genre','popularity','followers','href','type','uri')] %>% unlist
 }
