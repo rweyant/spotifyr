@@ -64,8 +64,19 @@ simplify_result <- function(result,type='artists'){
 
 
 simplify_result.song <- function(x){
-  if ('items' %in% names(x)) tmp <-  x[['items']]
-  if ('tracks' %in% names(x)) tmp <- x[['tracks']]
+  if ('items' %in% names(x)){
+    tmp <-  x[['items']]
+  } else if ('tracks' %in% names(x)) {
+    tmp <- x[['tracks']]
+  } else tmp <- x
+
+  # Delete some data
+  tmp <- lapply(tmp, function(x){
+    x$available_markets <- NULL
+    x$album$available_markets <- NULL
+    x
+  })
+
   ldply(tmp,data.frame)
 }
 
