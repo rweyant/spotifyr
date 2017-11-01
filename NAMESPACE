@@ -1,1 +1,8 @@
 exportPattern("^[[:alpha:]]+")
+
+import(dplyr)
+import(httr)
+importFrom(glue, 'glue')
+importFrom(magrittr,"%T>%")
+importFrom(magrittr,extract2)
+
