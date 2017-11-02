@@ -1,19 +1,20 @@
 
-base_url <- 'https://api.spotify.com'
-authorize_url <- 'https://accounts.spotify.com/authorize/'
+BASE_URL <- 'https://api.spotify.com'
+AUTHORIZE_URL <- 'https://accounts.spotify.com/authorize'
+TOKENS_URL <- 'https://accounts.spotify.com/api/token'
 
-search_url <- paste(base_url,'/v1/search',sep='')
-albums_url <- paste(base_url,'/v1/albums/',sep='')
-artists_url <- paste(base_url,'/v1/artists/',sep='')
-browse_featured_playlists_url<- paste(base_url,'/v1/browse/featured-playlists/',sep='')
-browse_new_releases_url<- paste(base_url,'/v1/browse/new-releases/',sep='')
-browse_categories_url <- paste(base_url,'/v1/browse/categories/',sep='')
+SEARCH_URL <- paste(BASE_URL,'/v1/search',sep='')
+ALBUMS_URL <- paste(BASE_URL,'/v1/albums',sep='')
+ARTIST_URL <- paste(BASE_URL,'/v1/artists',sep='')
+BROWSE_FEATURED_PLAYLISTS_URL <- paste(BASE_URL,'/v1/browse/featured-playlists',sep='')
+BROWSE_NEW_RELEASES_URL<- paste(BASE_URL,'/v1/browse/new-releases',sep='')
+BROWSE_CATEGORIES_URL <- paste(BASE_URL,'/v1/browse/categories',sep='')
 
-following_url <- 'https://api.spotify.com/v1/me/following'
-library_url <- 'https://api.spotify.com/v1/me/tracks'
-user_url <- 'https://api.spotify.com/v1/users'
+FOLLOWING_URL <- 'https://api.spotify.com/v1/me/following'
+LIBRARY_URL <- 'https://api.spotify.com/v1/me/tracks'
+USER_URL <- 'https://api.spotify.com/v1/users'
 
-all_scopes <- paste('playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private',
+ALL_SCOPES <- paste('playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private',
                     'streaming user-follow-modify user-follow-read user-library-modify user-library-read user-read-private',
                     'user-read-birthdate user-read-email')
 
