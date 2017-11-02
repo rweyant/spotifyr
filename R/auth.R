@@ -3,25 +3,32 @@
 #'
 #' @param client_id the client ID given from Spotify
 #' @param client_secret the client secret ID given from Spotify
-set_credentials <- function(client_id,client_secret,client_redirect_uri){
-  assign('client_id', client_id,envir=.GlobalEnv)
-  assign('client_secret',client_secret,envir=.GlobalEnv)
-  assign('client_redirect_uri',client_redirect_uri,envir=.GlobalEnv)
+set_credentials <- function(client_id, client_secret, client_redirect_uri){
+  assign('client_id', client_id, envir = .GlobalEnv)
+  assign('client_secret', client_secret, envir=.GlobalEnv)
+  assign('client_redirect_uri', client_redirect_uri, envir=.GlobalEnv)
 }
 
 
 #' Get tokens for Client Credential
 #' This function looks for client_id and client_secret in the global environment
 get_tokens <- function(){
-  response <- POST('https://accounts.spotify.com/api/token',
+  response <- POST(url = TOKENS_URL,
                    accept_json(),
-                   authenticate(client_id,client_secret),
-                   body=list(grant_type='client_credentials'),
-                   encode='form')
+                   authenticate(Sys.getenv('SPOTIFY_CLIENT'), Sys.getenv('SPOTIFY_SECRET')),
+                   body = list(grant_type='client_credentials'),
+                   encode = 'form')
 
   get_response_content(response)
 }
 
+#' Set tokens in global environment
+#' @example
+#' set_tokens()
+set_tokens <- function() {
+  tokens <- get_tokens()
+  assign('access_token', tokens$access_token, envir = .GlobalEnv)
+}
 
 #' Get user code for Authorization Code user code
 #' Lauches Selenium Webbrowser to handle process
@@ -74,8 +81,8 @@ get_user_token <- function(user_code){
   content <- get_response_content(response)
 
   # Make accessible globally
-  assign('access_token',content$access_token,envir = .GlobalEnv)
-  assign('refresh_token',content$refresh_token,envir = .GlobalEnv)
+  assign('access_token', content$access_token,envir = .GlobalEnv)
+  assign('refresh_token', content$refresh_token,envir = .GlobalEnv)
 
   content
 }
