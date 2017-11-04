@@ -2,10 +2,15 @@
 #' Get the current user’s followed artists.
 #'
 #' For more information: https://developer.spotify.com/web-api/get-followed-artists/
+#'
+#' @examples
+#' set_tokens()
+#' user_auth()
+#' get_user_followed_artists()
 get_user_followed_artists <- function(...){
-  response <- GET(url = following_url,
-                query=list(type='artist',...),
-                add_headers(Authorization=paste('Bearer',access_token)))
+  response <- GET(url = FOLLOWING_URL,
+                  config(token = user_token),
+                  query = list(type = 'artist'))
   get_response_content(response)
 }
 
@@ -13,14 +18,18 @@ get_user_followed_artists <- function(...){
 #' Add the current user as a follower of one or more artists or other Spotify users.
 #'
 #' For more information: https://developer.spotify.com/web-api/follow-artists-users/
-follow <- function(ids,type=c('artist','user'),...){
-
+#' @param ids
+#' @param type
+#'
+#' @examples
+#' set_tokens()
+#' user_auth()
+#' follow('08td7MxkoHQkXnWAYD8d6Q', type='artist')
+follow <- function(ids, type = c('artist', 'user'), ...){
   type <- match.arg(type)
-
-  response <- PUT(url = paste(following_url,'?type=',type,'&ids=',paste(ids,collapse=','),sep=''),
-                  # body=list(...),
-                  add_headers(Authorization=paste('Bearer',access_token),
-                              'Content-Type'='application/json'))
+  response <- PUT(FOLLOWING_URL,
+                  config(token = user_token),
+                  query = list(type=type, ids=ids))
   get_response_content(response)
 }
 
@@ -28,14 +37,20 @@ follow <- function(ids,type=c('artist','user'),...){
 #' Remove the current user as a follower of one or more artists or other Spotify users
 #'
 #' For more information: https://developer.spotify.com/web-api/unfollow-artists-users/
-unfollow <- function(ids,type=c('artist','user'),...){
-
+#'
+#' @param ids
+#' @param type
+#'
+#' @examples
+#' set_tokens()
+#' user_auth()
+#' unfollow('08td7MxkoHQkXnWAYD8d6Q', type='artist')
+unfollow <- function(ids, type = c('artist','user'), ...){
   type <- match.arg(type)
-
-  response <- DELETE(url = paste(following_url,'?type=',type,'&ids=',paste(ids,collapse=','),sep=''),
-                  # body=list(...),
-                  add_headers(Authorization=paste('Bearer',access_token),
-                              'Content-Type'='application/json'))
+  response <- DELETE(FOLLOWING_URL,
+                     config(token = user_token),
+                     query = list(type=type, ids=ids),
+                     encode = 'json')
   get_response_content(response)
 }
 
@@ -44,27 +59,40 @@ unfollow <- function(ids,type=c('artist','user'),...){
 #' Check to see if the current user is following one or more artists or other Spotify users
 #'
 #' For more information: https://developer.spotify.com/web-api/check-current-user-follows/
-following <- function(ids,type=c('artist','user'),...){
-
+#'
+#' @param ids
+#' @param type
+#'
+#' @examples
+#' set_tokens()
+#' user_auth()
+#' following(ids=c('08td7MxkoHQkXnWAYD8d6Q', '74ASZWbe4lXaubB36ztrGX'), type='artist')
+following <- function(ids, type=c('artist', 'user'), ...){
   type <- match.arg(type)
-
-  response <- GET(url = paste(following_url,'/contains',sep=''),
-                  query=list(type=type,ids=ids),
-                  add_headers(Authorization=paste('Bearer',access_token)))
-
-  get_response_content(response)[[1]]
+  ids <- paste(ids, collapse = ',')
+  response <- GET(glue('{FOLLOWING_URL}/contains'),
+                  config(token = user_token),
+                  query = list(type = type, ids = ids))
+  get_response_content(response)
 }
 
 #' Follow a Playlist
 #' Add the current user as a follower of a playlist
 #'
 #' For more information: https://developer.spotify.com/web-api/follow-playlist/
-follow_playlist <- function(owner_id,playlist_id,...){
-
-  response <- PUT(url = paste(base_url,'/v1/users/',owner_id,'/playlists/',playlist_id,'/followers',sep=''),
-                  # body=list(...),
-                  add_headers(Authorization=paste('Bearer',access_token),
-                              'Content-Type'='application/json'))
+#'
+#' @param owner_id
+#' @param playlist_id
+#' @param public
+#'
+#' @examples
+#' set_tokens()
+#' user_auth()
+#' follow_playlist(owner_id = 'jmperezperez', playlist_id = '2v3iNvBX8Ay1Gt2uXtUKUT')
+follow_playlist <- function(owner_id, playlist_id, public = TRUE, ...){
+  response <- PUT(glue('{USER_URL}/{owner_id}/playlists/{playlist_id}/followers'),
+                  config(token = user_token),
+                  body = list(public = public))
   get_response_content(response)
 }
 
@@ -73,12 +101,17 @@ follow_playlist <- function(owner_id,playlist_id,...){
 #' Remove the current user as a follower of a playlist.
 #'
 #' For more information: https://developer.spotify.com/web-api/unfollow-playlist/
-unfollow_playlist <- function(owner_id,playlist_id,...){
-
-  response <- DELETE(url = paste(base_url,'/v1/users/',owner_id,'/playlists/',playlist_id,'/followers',sep=''),
-                  # body=list(...),
-                  add_headers(Authorization=paste('Bearer',access_token),
-                              'Content-Type'='application/json'))
+#'
+#' @param owner_id
+#' @param playlist_id
+#'
+#' @examples
+#' set_tokens()
+#' user_auth()
+#' unfollow_playlist(owner_id = 'jmperezperez', playlist_id = '2v3iNvBX8Ay1Gt2uXtUKUT')
+unfollow_playlist <- function(owner_id, playlist_id, ...){
+  response <- DELETE(glue('{USER_URL}/{owner_id}/playlists/{playlist_id}/followers'),
+                     config(token = user_token))
   get_response_content(response)
 }
 
@@ -86,13 +119,20 @@ unfollow_playlist <- function(owner_id,playlist_id,...){
 #' Check to see if one or more Spotify users are following a specified playlist.
 #'
 #' For more information: https://developer.spotify.com/web-api/check-user-following-playlist/
-following_playlist <- function(owner_id,playlist_id,ids,...){
-
-  response <- GET(url = paste(base_url,'/v1/users/',
-                              owner_id,'/playlists/',
-                              playlist_id,'/followers/contains',sep=''),
-                     query=list(ids=paste(ids,collapse=',')),
-                     add_headers(Authorization=paste('Bearer',access_token)))
+#'
+#' @param owner_id
+#' @param playlist_id
+#' @param ids
+#'
+#' @examples
+#' set_tokens()
+#' user_auth()
+#' following_playlist(owner_id = 'jmperezperez', playlist_id = '2v3iNvBX8Ay1Gt2uXtUKUT', ids='rweyant')
+following_playlist <- function(owner_id, playlist_id, ids,...){
+  response <- GET(glue('{USER_URL}/{owner_id}/playlists/{playlist_id}/followers/contains'),
+                  config(token = user_token),
+                  body = list(public = public),
+                  query = list(ids = paste(ids, collapse = ',')))
   unlist(get_response_content(response))
 }
 
