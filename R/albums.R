@@ -9,10 +9,10 @@
 #' get_album('0sNOF9WDwhWunNAHPD3Baj')
 #' get_album('0sNOF9WDwhWunNAHPD3Baj', market='IS')
 get_album <- function(id,...){
-  search <- GET(url = glue('{ALBUMS_URL}/{id}'),
+  response <- GET(url = glue('{ALBUMS_URL}/{id}'),
                 add_headers(Authorization=paste('Bearer', access_token)),
                 query = list(...))
-  get_response_content(search)
+  get_response_content(response)
 }
 
 #' Get Several Albums
@@ -26,10 +26,10 @@ get_album <- function(id,...){
 #' get_albums(ids = c('41MnTivkwTO3UUJ8DrqEJJ', '6JWc4iAiJ9FjyK0B59ABb4', '6UXCm6bOO4gFlDQZV5yL37'), market='US')
 get_albums <- function(ids,...){
   query <- list(ids = paste(ids, collapse=','), ...)
-  search <- GET(url = glue('{ALBUMS_URL}'),
+  response <- GET(url = glue('{ALBUMS_URL}'),
                 add_headers(Authorization=paste('Bearer', access_token)),
                 query = query)
-  get_response_content(search)
+  get_response_content(response)
 }
 
 #' Get an Album’s Tracks
@@ -42,8 +42,8 @@ get_albums <- function(ids,...){
 #' get_album_tracks('6akEvsycLGftJxYudPjmqK')
 #' get_album_tracks('6akEvsycLGftJxYudPjmqK', limit = 2)
 get_album_tracks <- function(id,...){
-  search <- GET(url = glue('{ALBUMS_URL}/{id}/tracks'),
+  response <- GET(url = glue('{ALBUMS_URL}/{id}/tracks'),
                 add_headers(Authorization=paste('Bearer', access_token)),
                 query=list(...))
-  get_response_content(search)
+  get_response_content(response)
 }
