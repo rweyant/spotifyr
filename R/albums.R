@@ -10,7 +10,7 @@
 #' get_album('0sNOF9WDwhWunNAHPD3Baj', market='IS')
 get_album <- function(id,...){
   response <- GET(url = glue('{ALBUMS_URL}/{id}'),
-                add_headers(Authorization=paste('Bearer', access_token)),
+                add_headers(Authorization = glue('Bearer {access_token}')),
                 query = list(...))
   get_response_content(response)
 }
@@ -27,7 +27,7 @@ get_album <- function(id,...){
 get_albums <- function(ids,...){
   query <- list(ids = paste(ids, collapse=','), ...)
   response <- GET(url = ALBUMS_URL,
-                add_headers(Authorization=paste('Bearer', access_token)),
+                add_headers(Authorization = glue('Bearer {access_token}')),
                 query = query)
   get_response_content(response)
 }
@@ -43,7 +43,7 @@ get_albums <- function(ids,...){
 #' get_album_tracks('6akEvsycLGftJxYudPjmqK', limit = 2)
 get_album_tracks <- function(id,...){
   response <- GET(url = glue('{ALBUMS_URL}/{id}/tracks'),
-                add_headers(Authorization=paste('Bearer', access_token)),
+                add_headers(Authorization = glue('Bearer {access_token}')),
                 query=list(...))
   get_response_content(response)
 }
