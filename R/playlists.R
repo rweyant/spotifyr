@@ -11,7 +11,7 @@
 get_user_playlists <- function(user_id, ...){
   response <- GET(url = glue('{USER_URL}/{user_id}/playlists'),
                   add_headers(Authorization = glue('Bearer {access_token}')),
-                  query=list(...))
+                  query = list(...))
   get_response_content(response)
 }
 
@@ -128,8 +128,7 @@ remove_tracks_from_playlist <- function(user_id,playlist_id, uris){
   response <- DELETE(url = glue('{USER_URL}/{user_id}/playlists/{playlist_id}/tracks'),
                      config(token = user_token),
                      body = list(tracks = data.frame(uri = uris)),
-                     encode = 'json',
-                     verbose())
+                     encode = 'json')
 
   get_response_content(response)
 }
