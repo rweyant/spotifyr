@@ -134,3 +134,7 @@ remove_tracks_from_playlist <- function(user_id,playlist_id, uris){
   get_response_content(response)
 }
 
+
+# TODO https://developer.spotify.com/web-api/reorder-playlists-tracks/
+# TODO https://developer.spotify.com/web-api/replace-playlists-tracks/
+# TODO https://developer.spotify.com/web-api/change-playlist-details/
