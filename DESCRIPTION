@@ -1,17 +1,16 @@
 Package: spotifyr
 Type: Package
 Title: A wrapper for the Spotify API in R
-Version: 0.1
+Version: 0.2
 Date: 2017-10-31
 Authors@R: person("Robert", "Weyant", email = "robert.weyant@gmail.com", role = c("aut", "cre"))
 Description: spotifyr offers access to all aspects of Spotify's API throuh R.
     Requires a developer account (https://developer.spotify.com/).
 License: GNU General Public License v2.0
 Imports: httr,
-    jsonlite,
-    stringr,
-    stringi,
-    plyr
+    dplyr,
+    magrittr,
+    glue
 Suggests:
   testthat
 URL: https://github.com/rweyant/spotifyr
