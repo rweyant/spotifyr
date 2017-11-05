@@ -28,7 +28,7 @@ get_user_top <- function(type=c('artists', 'tracks')){
 #' user_auth()
 #' get_user_recently_played()
 get_user_recently_played <- function(){
-  response <- GET(url = RECENTLY_PLAYED_URL,
+  response <- GET(url = glue('{PLAYER_ENDPOINT}/recently-played'),
                   config(token = user_token))
   get_response_content(response)
 }

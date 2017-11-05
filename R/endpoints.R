@@ -19,7 +19,8 @@ BROWSE_CATEGORIES_URL <- glue('{BASE_URL}/{API_VERSION}/browse/categories')
 FOLLOWING_URL <- glue('{BASE_URL}/{API_VERSION}/me/following')
 LIBRARY_URL <- glue('{BASE_URL}/{API_VERSION}/me/tracks')
 TOP_URL <- glue('{BASE_URL}/{API_VERSION}/me/top')
-RECENTLY_PLAYED_URL <- glue('{BASE_URL}/{API_VERSION}/me/player/recently-played')
+PLAYER_ENDPOINT <- glue('{BASE_URL}/{API_VERSION}/me/player')
+# RECENTLY_PLAYED_URL <- glue('{BASE_URL}/{API_VERSION}/me/player/recently-played')
 
 USER_URL <- glue('{BASE_URL}/{API_VERSION}/users')
 
