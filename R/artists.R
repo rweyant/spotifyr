@@ -1,6 +1,7 @@
 #' Get an Artist
 #' Get Spotify catalog information for a single artist identified by their unique Spotify ID.
-#' For more information: https://developer.spotify.com/web-api/get-artist/
+#'
+#' @references \href{https://developer.spotify.com/web-api/get-artist/}{API documentation}
 #'
 #' @param id Required. The Spotify ID for the album
 #'
@@ -15,7 +16,8 @@ get_artist <- function(id, ...){
 
 #' Get Several Artists
 #' Get Spotify catalog information for several artists based on their Spotify IDs.
-#' For more information: https://developer.spotify.com/web-api/get-several-artists/
+#'
+#' @references \href{https://developer.spotify.com/web-api/get-several-artists/}{API documentation}
 #'
 #' @param ids Required. A comma-separated list of the Spotify IDs for the artists. Maximum: 50 IDs.
 #'
@@ -34,7 +36,8 @@ get_artists <- function(ids){
 #' Get Spotify catalog information about an artist’s albums.
 #' Optional parameters can be specified in the query string to
 #' filter and sort the response.
-#' For more information: https://developer.spotify.com/web-api/get-artists-albums/
+#'
+#' @references \href{https://developer.spotify.com/web-api/get-artists-albums/}{API documentation}
 #'
 #' @param id Required. The Spotify ID for the artist
 #' @examples
@@ -51,7 +54,8 @@ get_artist_albums <- function(id, ...){
 #' Get an Artist’s Top Tracks
 #' Get Spotify catalog information about an artist’s top tracks by country.
 #' filter and sort the response.
-#' For more information: https://developer.spotify.com/web-api/get-artists-top-tracks/
+#'
+#' @references \href{https://developer.spotify.com/web-api/get-artists-top-tracks/}{API documentation}
 #'
 #' @param id Required. The Spotify ID for the artist
 #' @examples
@@ -69,7 +73,8 @@ get_artist_toptracks <- function(id, country = 'US'){
 #' Get an Artist’s Related Artists
 #' Get Spotify catalog information about artists similar to a given artist.
 #' Similarity is based on analysis of the Spotify community’s listening history.
-#' For more information: https://developer.spotify.com/web-api/get-related-artists/
+#'
+#' @references \href{https://developer.spotify.com/web-api/get-related-artists/}{API documentation}
 #'
 #' @param id Required. The Spotify ID for the artist
 #' @examples
