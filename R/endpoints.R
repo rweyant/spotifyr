@@ -18,9 +18,12 @@ BROWSE_CATEGORIES_URL <- glue('{BASE_URL}/{API_VERSION}/browse/categories')
 
 FOLLOWING_URL <- glue('{BASE_URL}/{API_VERSION}/me/following')
 LIBRARY_URL <- glue('{BASE_URL}/{API_VERSION}/me/tracks')
+TOP_URL <- glue('{BASE_URL}/{API_VERSION}/me/top')
+RECENTLY_PLAYED_URL <- glue('{BASE_URL}/{API_VERSION}/me/player/recently-played')
+
 USER_URL <- glue('{BASE_URL}/{API_VERSION}/users')
 
 ALL_SCOPES <- paste('playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private',
                     'streaming user-follow-modify user-follow-read user-library-modify user-library-read user-read-private',
-                    'user-read-birthdate user-read-email')
+                    'user-read-birthdate user-read-email user-top-read user-read-recently-played')
 
