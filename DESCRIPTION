@@ -16,3 +16,4 @@ Suggests:
 URL: https://github.com/rweyant/spotifyr
 BugReport: https://github.com/rweyant/spotifyr/issues
 LazyData: TRUE
+RoxygenNote: 6.0.1
