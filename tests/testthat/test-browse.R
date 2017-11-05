@@ -1,8 +1,6 @@
-context("Albums endpoints")
+context("Browse endpoints")
 
-test_that("get_album* functions return expected content", {
-
-  expected_album_fields <- c()
+test_that("browse functions return expected content", {
 
   # setup
   set_tokens()
