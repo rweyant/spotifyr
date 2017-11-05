@@ -1,5 +1,3 @@
-
-
 #' Get Spotify catalog information about artists, albums,
 #' tracks or playlists that match a keyword string.
 #'
