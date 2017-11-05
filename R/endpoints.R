@@ -3,9 +3,11 @@ BASE_URL <- 'https://api.spotify.com'
 AUTHORIZE_URL <- 'https://accounts.spotify.com/authorize'
 TOKENS_URL <- 'https://accounts.spotify.com/api/token'
 
-SEARCH_URL <- paste(BASE_URL,'/v1/search',sep='')
-ALBUMS_URL <- paste(BASE_URL,'/v1/albums',sep='')
-ARTIST_URL <- paste(BASE_URL,'/v1/artists',sep='')
+SEARCH_URL <- glue('{BASE_URL}/v1/search')
+ALBUMS_URL <- glue('{BASE_URL}/v1/albums')
+ARTIST_URL <- glue('{BASE_URL}/v1/artists')
+USER_URL <- glue('{BASE_URL}/v1/users')
+
 BROWSE_FEATURED_PLAYLISTS_URL <- paste(BASE_URL,'/v1/browse/featured-playlists',sep='')
 BROWSE_NEW_RELEASES_URL<- paste(BASE_URL,'/v1/browse/new-releases',sep='')
 BROWSE_CATEGORIES_URL <- paste(BASE_URL,'/v1/browse/categories',sep='')
