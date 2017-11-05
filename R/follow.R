@@ -1,7 +1,7 @@
 #' Get User’s Followed Artists
 #' Get the current user’s followed artists.
 #'
-#' For more information: https://developer.spotify.com/web-api/get-followed-artists/
+#' @references \href{https://developer.spotify.com/web-api/get-followed-artists/}{API documentation}
 #'
 #' @examples
 #' set_tokens()
@@ -17,7 +17,7 @@ get_user_followed_artists <- function(...){
 #' Follow Artists or Users
 #' Add the current user as a follower of one or more artists or other Spotify users.
 #'
-#' For more information: https://developer.spotify.com/web-api/follow-artists-users/
+#' @references \href{https://developer.spotify.com/web-api/follow-artists-users/}{API documentation}
 #' @param ids
 #' @param type
 #'
@@ -36,7 +36,7 @@ follow <- function(ids, type = c('artist', 'user'), ...){
 #' Unfollow Artists or Users
 #' Remove the current user as a follower of one or more artists or other Spotify users
 #'
-#' For more information: https://developer.spotify.com/web-api/unfollow-artists-users/
+#' @references \href{https://developer.spotify.com/web-api/unfollow-artists-users/}{API documentation}
 #'
 #' @param ids
 #' @param type
@@ -58,7 +58,7 @@ unfollow <- function(ids, type = c('artist','user'), ...){
 #' Check if Current User Follows Artists or Users
 #' Check to see if the current user is following one or more artists or other Spotify users
 #'
-#' For more information: https://developer.spotify.com/web-api/check-current-user-follows/
+#' @references \href{https://developer.spotify.com/web-api/check-current-user-follows/}{API documentation}
 #'
 #' @param ids
 #' @param type
@@ -79,7 +79,7 @@ following <- function(ids, type=c('artist', 'user'), ...){
 #' Follow a Playlist
 #' Add the current user as a follower of a playlist
 #'
-#' For more information: https://developer.spotify.com/web-api/follow-playlist/
+#' @references \href{https://developer.spotify.com/web-api/follow-playlist/}{API documentation}
 #'
 #' @param owner_id
 #' @param playlist_id
@@ -100,7 +100,7 @@ follow_playlist <- function(owner_id, playlist_id, public = TRUE, ...){
 #' Unfollow a Playlist
 #' Remove the current user as a follower of a playlist.
 #'
-#' For more information: https://developer.spotify.com/web-api/unfollow-playlist/
+#' @references \href{https://developer.spotify.com/web-api/unfollow-playlist/}{API documentation}
 #'
 #' @param owner_id
 #' @param playlist_id
@@ -118,7 +118,7 @@ unfollow_playlist <- function(owner_id, playlist_id, ...){
 #' Check if Users Follow a Playlist
 #' Check to see if one or more Spotify users are following a specified playlist.
 #'
-#' For more information: https://developer.spotify.com/web-api/check-user-following-playlist/
+#' @references \href{https://developer.spotify.com/web-api/check-user-following-playlist/}{API documentation}
 #'
 #' @param owner_id
 #' @param playlist_id
