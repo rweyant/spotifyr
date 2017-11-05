@@ -1,7 +1,8 @@
 
 #' Get an Album
 #' Get Spotify catalog information for a single album
-#' For more information: https://developer.spotify.com/web-api/get-album/
+#'
+#' @references \href{https://developer.spotify.com/web-api/get-album/}{API documentation}
 #'
 #' @param id Required. The Spotify ID for the album
 #' @examples
@@ -17,7 +18,8 @@ get_album <- function(id,...){
 
 #' Get Several Albums
 #' Get Spotify catalog information for multiple albums identified by their Spotify IDs.
-#' For more information: https://developer.spotify.com/web-api/get-several-albums/
+#'
+#' @references \href{https://developer.spotify.com/web-api/get-several-album/}{API documentation}
 #'
 #' @param ids Required. A comma-separated list of the Spotify IDs for the albums. Maximum: 20 IDs.
 #' @examples
@@ -35,7 +37,9 @@ get_albums <- function(ids,...){
 #' Get an Album’s Tracks
 #' Get Spotify catalog information about an album’s tracks.
 #' Optional parameters can be used to limit the number of tracks returned.
-#' For more information: https://developer.spotify.com/web-api/get-albums-tracks/
+#'
+#' @references \href{https://developer.spotify.com/web-api/get-albums-tracks/}{API documentation}
+#'
 #' @param id Required. The Spotify ID for the album
 #' @examples
 #' set_tokens()
