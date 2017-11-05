@@ -11,8 +11,8 @@
 #'
 #' @examples
 #' set_tokens()
-#' search(q = 'heavy metal', type = 'track')
-search <- function(q, type = c('artist', 'album', 'playlist', 'track'), ...){
+#' search_spotify(q = 'heavy metal', type = 'track')
+search_spotify <- function(q, type = c('artist', 'album', 'playlist', 'track'), ...){
   type <- match.arg(type)
   response <- GET(url = SEARCH_URL,
                   add_headers(Authorization = glue('Bearer {access_token}')),
