@@ -1,11 +1,6 @@
 user_auth <- function(cache = TRUE) {
 
   set_tokens()
-  response <- GET(url = AUTHORIZE_URL,
-                  query = list(client_id = Sys.getenv('SPOTIFY_CLIENT'),
-                               response_type = 'code',
-                               scope = ALL_SCOPES,
-                               redirect_uri = 'https://github.com/rweyant/spotifyr'))
 
   # set dropbox oauth2 endpoints
   spotify <- httr::oauth_endpoint(
