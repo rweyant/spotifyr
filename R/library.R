@@ -9,17 +9,19 @@
 #' set_tokens()
 #' user_auth()
 #' save_track(ids=c('4iV5W9uYEdYUVa79Axb7Rh', '4iV5W9uYEdYUVa79Axb7Rh'))
-#' save_track(ids=c('4iV5W9uYEdYUVa79Axb7Rh'))
+#' save_track(ids='4iV5W9uYEdYUVa79Axb7Rh')
 save_track <- function(ids,...){
 
   #TODO: fix this hack
-  payload_ids <- ids
-  if (length(ids) == 1)
-    payload_ids <- c(ids, ids)
+  if (length(ids) == 1) {
+    payload_ids <- glue('{{"ids": ["{ids}"]}}')
+  } else {
+    payload_ids = list(ids = ids)
+  }
 
   response <- PUT(LIBRARY_URL,
                   config(token = user_token),
-                  body = list(ids = payload_ids),
+                  body = payload_ids,
                   encode = 'json')
   get_response_content(response)
 
