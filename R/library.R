@@ -5,6 +5,8 @@
 #'
 #' @param ids
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' user_auth()
@@ -34,6 +36,9 @@ save_track <- function(ids,...){
 #' @references \href{https://developer.spotify.com/web-api/get-users-saved-tracks/}{API documentation}
 #'
 #' @param ids
+#'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' user_auth()
@@ -54,6 +59,8 @@ get_saved_tracks <- function(...){
 #'
 #' @param ids
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' user_auth()
@@ -72,6 +79,8 @@ remove_track <- function(ids,...){
 #' @references \href{https://developer.spotify.com/web-api/get-users-saved-tracks/}{API documentation}
 #'
 #' @param ids
+#'
+#' @export
 #'
 #' @examples
 #' set_tokens()
