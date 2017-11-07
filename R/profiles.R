@@ -5,6 +5,8 @@
 #'
 #' @param user_id
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' get_user_profile(user_id = 'rweyant')
@@ -18,6 +20,8 @@ get_user_profile <- function(user_id){
 #' Get Current User’s Profile
 #' Get detailed profile information about the current user (including the current user’s username).
 #' @references \href{https://developer.spotify.com/web-api/get-current-users-profile/}{API documentation}
+#'
+#' @export
 #'
 #' @examples
 #' set_tokens()
