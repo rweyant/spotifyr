@@ -1,3 +1,12 @@
+#' Authorize a user
+#'
+#' @param cache whether to cache the results
+#'
+#' @export
+#'
+#' @example
+#' set_tokens()
+#' user_auth()
 user_auth <- function(cache = TRUE) {
 
   set_tokens()
