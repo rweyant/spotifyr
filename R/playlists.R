@@ -5,6 +5,8 @@
 #'
 #' @param user_id
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' get_user_playlists(user_id = 'rweyant')
@@ -23,6 +25,8 @@ get_user_playlists <- function(user_id, ...){
 #'
 #' @param user_id
 #' @param playlist_id
+#'
+#' @export
 #'
 #' @examples
 #' set_tokens()
@@ -43,6 +47,8 @@ get_playlist <- function(user_id, playlist_id,...){
 #' @param user_id
 #' @param playlist_id
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' get_playlist_tracks(user_id = 'spotify', playlist_id = '59ZbFPES4DQwEjBpWHzrtC')
@@ -61,6 +67,8 @@ get_playlist_tracks <- function(user_id,playlist_id,...){
 #'
 #' @param user_id
 #' @param name
+#'
+#' @export
 #'
 #' @examples
 #' set_tokens()
@@ -83,6 +91,8 @@ create_playlist <- function(user_id, name,...){
 #' @param user_id
 #' @param name
 #' @param uris
+#'
+#' @export
 #'
 #' @examples
 #' set_tokens()
@@ -115,6 +125,8 @@ add_tracks_to_playlist <- function(user_id, playlist_id, uris){
 #' @param user_id
 #' @param playlist_id
 #' @param uris
+#'
+#' @export
 #'
 #' @examples
 #' set_tokens()
