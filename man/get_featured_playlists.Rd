@@ -8,9 +8,13 @@ Get a list of Spotify featured playlists (shown, for example, on a Spotify playe
 get_featured_playlists(...)
 }
 \description{
-For more information: https://developer.spotify.com/web-api/get-list-featured-playlists/
+Get a List of Featured Playlists
+Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s “Browse” tab).
 }
 \examples{
 set_tokens()
 get_featured_playlists()
+}
+\references{
+\href{https://developer.spotify.com/web-api/get-list-featured-playlists/}{API documentation}
 }

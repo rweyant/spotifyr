@@ -7,6 +7,9 @@ Get a list of the songs saved in the current Spotify user’s “Your Music” l
 \usage{
 get_saved_tracks(...)
 }
+\arguments{
+\item{ids}{}
+}
 \description{
 Get a User’s Saved Tracks
 Get a list of the songs saved in the current Spotify user’s “Your Music” library.

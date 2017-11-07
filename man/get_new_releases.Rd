@@ -3,8 +3,7 @@
 \name{get_new_releases}
 \alias{get_new_releases}
 \title{Get a List of New Releases
-Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).
-For more information: https://developer.spotify.com/web-api/get-list-new-releases/}
+Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).}
 \usage{
 get_new_releases(country, ...)
 }
@@ -17,8 +16,10 @@ returned items to be relevant to a particular country.}
 \description{
 Get a List of New Releases
 Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).
-For more information: https://developer.spotify.com/web-api/get-list-new-releases/
 }
 \examples{
 get_new_releases(country = 'US')
+}
+\references{
+\href{https://developer.spotify.com/web-api/get-list-new-releases/}{API documentation}
 }

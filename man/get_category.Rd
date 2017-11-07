@@ -11,8 +11,12 @@ get_category(category_id, ...)
 \item{category_id}{The Spotify category ID for the category.}
 }
 \description{
-For more information: https://developer.spotify.com/web-api/get-category/
+Get a Category
+Get a single category used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
 }
 \examples{
 get_category('party')
+}
+\references{
+\href{https://developer.spotify.com/web-api/get-category/}{API documentation}
 }

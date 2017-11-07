@@ -11,8 +11,12 @@ get_category_playlists(category_id, ...)
 \item{category_id}{The Spotify category ID for the category.}
 }
 \description{
-For more information: https://developer.spotify.com/web-api/get-categorys-playlists/
+Get a Category’s Playlists
+Get a list of Spotify playlists tagged with a particular category.
 }
 \examples{
 get_category_playlists('party')
+}
+\references{
+\href{https://developer.spotify.com/web-api/get-categorys-playlists/}{API documentation}
 }

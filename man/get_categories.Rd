@@ -8,8 +8,12 @@ Get a list of categories used to tag items in Spotify (on, for example, the Spot
 get_categories(...)
 }
 \description{
-For more information: https://developer.spotify.com/web-api/get-list-categories/
+Get a List of Categories
+Get a list of categories used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
 }
 \examples{
 get_categories()
+}
+\references{
+\href{https://developer.spotify.com/web-api/get-list-categories/}{API documentation}
 }
