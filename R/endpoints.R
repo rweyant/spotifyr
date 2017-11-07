@@ -20,7 +20,6 @@ FOLLOWING_URL <- glue('{BASE_URL}/{API_VERSION}/me/following')
 LIBRARY_URL <- glue('{BASE_URL}/{API_VERSION}/me/tracks')
 TOP_URL <- glue('{BASE_URL}/{API_VERSION}/me/top')
 PLAYER_URL <- glue('{BASE_URL}/{API_VERSION}/me/player')
-# RECENTLY_PLAYED_URL <- glue('{BASE_URL}/{API_VERSION}/me/player/recently-played')
 
 USER_URL <- glue('{BASE_URL}/{API_VERSION}/users')
 
