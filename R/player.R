@@ -3,6 +3,8 @@
 #'
 #' @references \href{https://developer.spotify.com/web-api/get-a-users-available-devices/}{API documentation}
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' user_auth()
@@ -49,6 +51,8 @@ get_currently_playing_track <- function(){
 #'
 #' @references \href{https://developer.spotify.com/web-api/transfer-a-users-playback/}{API documentation}
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' user_auth()
@@ -70,6 +74,8 @@ transfer_user_playback <- function(device_ids, play = TRUE){
 #' @references \href{https://developer.spotify.com/web-api/pause-a-users-playback/}{API documentation}
 #' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user's currently active device is the target
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' user_auth()
@@ -87,11 +93,15 @@ pause_user_playback <- function(device_id = NULL){
 #'
 #' @references \href{https://developer.spotify.com/web-api/start-a-users-playback/}{API documentation}
 #'
+#' @export
+#'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' user_auth()
 #' start_user_playback()
-start_user_playback <- function(device_ids = NULL, play = TRUE){
+start_user_playback <- function(device_id = NULL, play = TRUE){
   if (!is.null(device_id)) warning('device_id argument not supported yet.')
   response <- PUT(url = glue('{PLAYER_URL}/play'),
                   config(token = user_token))
@@ -104,6 +114,8 @@ start_user_playback <- function(device_ids = NULL, play = TRUE){
 #'
 #' @references \href{https://developer.spotify.com/web-api/skip-users-playback-to-next-track/}{API documentation}
 #' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user's currently active device is the target
+#'
+#' @export
 #'
 #' @examples
 #' set_tokens()
@@ -121,6 +133,8 @@ skip_user_playback_next <- function(device_id = NULL){
 #'
 #' @references \href{https://developer.spotify.com/web-api/skip-users-playback-to-previous-track/}{API documentation}
 #' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user's currently active device is the target
+#'
+#' @export
 #'
 #' @examples
 #' set_tokens()
@@ -142,6 +156,8 @@ skip_user_playback_previous <- function(device_id = NULL){
 #' @param position_ms Required. The position in milliseconds to seek to. Must be a positive number. Passing in a position that is greater than the length of the track will cause the player to start playing the next song.
 #' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user's currently active device is the target
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' user_auth()
@@ -150,6 +166,6 @@ seek_user_playback <- function(position_ms, device_id = NULL){
   if (!is.null(device_id)) warning('device_id argument not supported yet.')
   response <- PUT(url = glue('{PLAYER_URL}/seek'),
                   config(token = user_token),
-                  query=list(position_ms=position_ms))
+                  query = list(position_ms = position_ms))
   get_response_content(response)
 }

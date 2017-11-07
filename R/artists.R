@@ -3,6 +3,8 @@
 #'
 #' @references \href{https://developer.spotify.com/web-api/get-artist/}{API documentation}
 #'
+#' @export
+#'
 #' @param id Required. The Spotify ID for the album
 #'
 #' @examples
@@ -18,6 +20,8 @@ get_artist <- function(id, ...){
 #' Get Spotify catalog information for several artists based on their Spotify IDs.
 #'
 #' @references \href{https://developer.spotify.com/web-api/get-several-artists/}{API documentation}
+#'
+#' @export
 #'
 #' @param ids Required. A comma-separated list of the Spotify IDs for the artists. Maximum: 50 IDs.
 #'
@@ -39,6 +43,8 @@ get_artists <- function(ids){
 #'
 #' @references \href{https://developer.spotify.com/web-api/get-artists-albums/}{API documentation}
 #'
+#' @export
+#'
 #' @param id Required. The Spotify ID for the artist
 #' @examples
 #' set_tokens()
@@ -56,6 +62,8 @@ get_artist_albums <- function(id, ...){
 #' filter and sort the response.
 #'
 #' @references \href{https://developer.spotify.com/web-api/get-artists-top-tracks/}{API documentation}
+#'
+#' @export
 #'
 #' @param id Required. The Spotify ID for the artist
 #' @examples
@@ -75,6 +83,8 @@ get_artist_toptracks <- function(id, country = 'US'){
 #' Similarity is based on analysis of the Spotify community’s listening history.
 #'
 #' @references \href{https://developer.spotify.com/web-api/get-related-artists/}{API documentation}
+#'
+#' @export
 #'
 #' @param id Required. The Spotify ID for the artist
 #' @examples

@@ -9,6 +9,8 @@
 #'
 #' @references \href{https://developer.spotify.com/web-api/search-item/}{API documentation}
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' search_spotify(q = 'heavy metal', type = 'track')

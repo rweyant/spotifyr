@@ -5,6 +5,8 @@
 #'
 #' @param id
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' get_track(id='3n3Ppam7vgaVa1iaRUc9Lp')
@@ -22,6 +24,8 @@ get_track <- function(id,...){
 #' @references \href{https://developer.spotify.com/web-api/get-several-tracks/}{API documentation}
 #'
 #' @param ids A comma-separated list of the Spotify IDs for the tracks. Maximum: 50 IDs.
+#'
+#' @export
 #'
 #' @examples
 #' set_tokens()
@@ -44,6 +48,8 @@ get_tracks <- function(ids,...){
 #'
 #' @param id Required. The Spotify ID for the track.
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' get_track_audio_analysis(id='3n3Ppam7vgaVa1iaRUc9Lp')
@@ -62,6 +68,8 @@ get_track_audio_analysis <- function(id, ...){
 #'
 #' @param id Required. The Spotify ID for the track.
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' get_track_audio_features(id='3n3Ppam7vgaVa1iaRUc9Lp')
@@ -78,6 +86,8 @@ get_track_audio_features <- function(id, ...){
 #' @references \href{https://developer.spotify.com/web-api/get-several-audio-features/}{API documentation}
 #'
 #' @param ids Required. A comma-separated list of the Spotify IDs for the tracks. Maximum: 100 IDs.
+#'
+#' @export
 #'
 #' @examples
 #' set_tokens()
