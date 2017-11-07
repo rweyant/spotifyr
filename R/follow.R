@@ -3,6 +3,8 @@
 #'
 #' @references \href{https://developer.spotify.com/web-api/get-followed-artists/}{API documentation}
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' user_auth()
@@ -18,8 +20,11 @@ get_user_followed_artists <- function(...){
 #' Add the current user as a follower of one or more artists or other Spotify users.
 #'
 #' @references \href{https://developer.spotify.com/web-api/follow-artists-users/}{API documentation}
+#'
 #' @param ids
 #' @param type
+#'
+#' @export
 #'
 #' @examples
 #' set_tokens()
@@ -40,6 +45,8 @@ follow <- function(ids, type = c('artist', 'user'), ...){
 #'
 #' @param ids
 #' @param type
+#'
+#' @export
 #'
 #' @examples
 #' set_tokens()
@@ -63,6 +70,8 @@ unfollow <- function(ids, type = c('artist','user'), ...){
 #' @param ids
 #' @param type
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' user_auth()
@@ -85,6 +94,8 @@ following <- function(ids, type=c('artist', 'user'), ...){
 #' @param playlist_id
 #' @param public
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' user_auth()
@@ -105,6 +116,8 @@ follow_playlist <- function(owner_id, playlist_id, public = TRUE, ...){
 #' @param owner_id
 #' @param playlist_id
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' user_auth()
@@ -123,6 +136,8 @@ unfollow_playlist <- function(owner_id, playlist_id, ...){
 #' @param owner_id
 #' @param playlist_id
 #' @param ids
+#'
+#' @export
 #'
 #' @examples
 #' set_tokens()
