@@ -5,6 +5,9 @@
 #' @references \href{https://developer.spotify.com/web-api/get-album/}{API documentation}
 #'
 #' @param id Required. The Spotify ID for the album
+#'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' get_album('0sNOF9WDwhWunNAHPD3Baj')
@@ -22,6 +25,9 @@ get_album <- function(id,...){
 #' @references \href{https://developer.spotify.com/web-api/get-several-album/}{API documentation}
 #'
 #' @param ids Required. A comma-separated list of the Spotify IDs for the albums. Maximum: 20 IDs.
+#'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' get_albums(ids = c('41MnTivkwTO3UUJ8DrqEJJ', '6JWc4iAiJ9FjyK0B59ABb4', '6UXCm6bOO4gFlDQZV5yL37'))
@@ -40,7 +46,10 @@ get_albums <- function(ids,...){
 #'
 #' @references \href{https://developer.spotify.com/web-api/get-albums-tracks/}{API documentation}
 #'
+#' @export
+#'
 #' @param id Required. The Spotify ID for the album
+#'
 #' @examples
 #' set_tokens()
 #' get_album_tracks('6akEvsycLGftJxYudPjmqK')

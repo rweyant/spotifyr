@@ -5,6 +5,8 @@
 #'
 #' @param type
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' user_auth()
@@ -22,6 +24,8 @@ get_user_top <- function(type=c('artists', 'tracks')){
 #' Get tracks from the current user’s recently played tracks.
 #'
 #' @references \href{https://developer.spotify.com/web-api/web-api-personalization-endpoints/get-recently-played/}{API documentation}
+#'
+#' @export
 #'
 #' @examples
 #' set_tokens()
