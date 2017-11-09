@@ -2,16 +2,17 @@
 % Please edit documentation in R/artists.R
 \name{get_artist}
 \alias{get_artist}
-\title{Get an Artist
-Get Spotify catalog information for a single artist identified by their unique Spotify ID.}
+\title{Get an Artist}
 \usage{
 get_artist(id, ...)
 }
 \arguments{
 \item{id}{Required. The Spotify ID for the album}
 }
+\value{
+Spotify Artist object
+}
 \description{
-Get an Artist
 Get Spotify catalog information for a single artist identified by their unique Spotify ID.
 }
 \examples{

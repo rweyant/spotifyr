@@ -11,3 +11,6 @@ get_tokens()
 Get tokens for Client Credential
 This function looks for client_id and client_secret in the global environment
 }
+\examples{
+get_tokens()
+}

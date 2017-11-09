@@ -21,8 +21,8 @@ get_user_followed_artists <- function(...){
 #'
 #' @references \href{https://developer.spotify.com/web-api/follow-artists-users/}{API documentation}
 #'
-#' @param ids
-#' @param type
+#' @param type Required. The ID type: either artist or user.
+#' @param ids Optional. A comma-separated list of the artist or the user Spotify IDs.
 #'
 #' @export
 #'
@@ -43,8 +43,8 @@ follow <- function(ids, type = c('artist', 'user'), ...){
 #'
 #' @references \href{https://developer.spotify.com/web-api/unfollow-artists-users/}{API documentation}
 #'
-#' @param ids
-#' @param type
+#' @param type Required. The ID type: either artist or user.
+#' @param ids Optional. A comma-separated list of the artist or the user Spotify IDs.
 #'
 #' @export
 #'
@@ -67,8 +67,8 @@ unfollow <- function(ids, type = c('artist','user'), ...){
 #'
 #' @references \href{https://developer.spotify.com/web-api/check-current-user-follows/}{API documentation}
 #'
-#' @param ids
-#' @param type
+#' @param type Required. The ID type: either artist or user.
+#' @param ids Optional. A comma-separated list of the artist or the user Spotify IDs.
 #'
 #' @export
 #'
@@ -85,14 +85,19 @@ following <- function(ids, type=c('artist', 'user'), ...){
   get_response_content(response)
 }
 
-#' Follow a Playlist
-#' Add the current user as a follower of a playlist
+#' Follow a Playlist Add the current user as a follower of a playlist
 #'
-#' @references \href{https://developer.spotify.com/web-api/follow-playlist/}{API documentation}
+#' @references \href{https://developer.spotify.com/web-api/follow-playlist/}{API
+#'   documentation}
 #'
-#' @param owner_id
-#' @param playlist_id
-#' @param public
+#' @param owner_id The Spotify user ID of the person who owns the playlist.
+#' @param playlist_id The Spotify ID of the playlist. Any playlist can be
+#'   followed, regardless of its public/private status, as long as you know its
+#'   playlist ID.
+#' @param public Optional, default true. If true the playlist will be included
+#'   in user's public playlists, if false it will remain private. To be able to
+#'   follow playlists privately, the user must have granted the
+#'   playlist-modify-private scope.
 #'
 #' @export
 #'
@@ -108,13 +113,16 @@ follow_playlist <- function(owner_id, playlist_id, public = TRUE, ...){
 }
 
 
-#' Unfollow a Playlist
-#' Remove the current user as a follower of a playlist.
+#' Unfollow a Playlist Remove the current user as a follower of a playlist.
 #'
-#' @references \href{https://developer.spotify.com/web-api/unfollow-playlist/}{API documentation}
+#' @references
+#'   \href{https://developer.spotify.com/web-api/unfollow-playlist/}{API
+#'   documentation}
 #'
-#' @param owner_id
-#' @param playlist_id
+#' @param owner_id The Spotify user ID of the person who owns the playlist.
+#' @param playlist_id The Spotify ID of the playlist. Any playlist can be
+#'   followed, regardless of its public/private status, as long as you know its
+#'   playlist ID.
 #'
 #' @export
 #'
@@ -128,14 +136,20 @@ unfollow_playlist <- function(owner_id, playlist_id, ...){
   get_response_content(response)
 }
 
-#' Check if Users Follow a Playlist
-#' Check to see if one or more Spotify users are following a specified playlist.
+#' Check if Users Follow a Playlist Check to see if one or more Spotify users
+#' are following a specified playlist.
 #'
-#' @references \href{https://developer.spotify.com/web-api/check-user-following-playlist/}{API documentation}
+#' @references
+#'   \href{https://developer.spotify.com/web-api/check-user-following-playlist/}{API
+#'   documentation}
 #'
-#' @param owner_id
-#' @param playlist_id
-#' @param ids
+#' @param owner_id The Spotify user ID of the person who owns the playlist.
+#' @param playlist_id The Spotify ID of the playlist. Any playlist can be
+#'   followed, regardless of its public/private status, as long as you know its
+#'   playlist ID.
+#' @param ids Required. A comma-separated list of Spotify User IDs; the ids of
+#'   the users that you want to check to see if they follow the playlist.
+#'   Maximum: 5 ids.
 #'
 #' @export
 #'

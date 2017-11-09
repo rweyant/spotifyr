@@ -2,17 +2,25 @@
 % Please edit documentation in R/follow.R
 \name{following_playlist}
 \alias{following_playlist}
-\title{Check if Users Follow a Playlist
-Check to see if one or more Spotify users are following a specified playlist.}
+\title{Check if Users Follow a Playlist Check to see if one or more Spotify users
+are following a specified playlist.}
 \usage{
 following_playlist(owner_id, playlist_id, ids, ...)
 }
 \arguments{
-\item{ids}{}
+\item{owner_id}{The Spotify user ID of the person who owns the playlist.}
+
+\item{playlist_id}{The Spotify ID of the playlist. Any playlist can be
+followed, regardless of its public/private status, as long as you know its
+playlist ID.}
+
+\item{ids}{Required. A comma-separated list of Spotify User IDs; the ids of
+the users that you want to check to see if they follow the playlist.
+Maximum: 5 ids.}
 }
 \description{
-Check if Users Follow a Playlist
-Check to see if one or more Spotify users are following a specified playlist.
+Check if Users Follow a Playlist Check to see if one or more Spotify users
+are following a specified playlist.
 }
 \examples{
 set_tokens()
@@ -20,5 +28,6 @@ user_auth()
 following_playlist(owner_id = 'jmperezperez', playlist_id = '2v3iNvBX8Ay1Gt2uXtUKUT', ids='rweyant')
 }
 \references{
-\href{https://developer.spotify.com/web-api/check-user-following-playlist/}{API documentation}
+\href{https://developer.spotify.com/web-api/check-user-following-playlist/}{API
+  documentation}
 }

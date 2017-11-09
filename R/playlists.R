@@ -3,7 +3,7 @@
 #'
 #' @references \href{https://developer.spotify.com/web-api/get-list-users-playlists/}{API documentation}
 #'
-#' @param user_id
+#' @param user_id The user's Spotify user ID.
 #'
 #' @export
 #'
@@ -23,8 +23,8 @@ get_user_playlists <- function(user_id, ...){
 #'
 #' @references \href{https://developer.spotify.com/web-api/get-playlist/}{API documentation}
 #'
-#' @param user_id
-#' @param playlist_id
+#' @param user_id The user's Spotify user ID.
+#' @param playlist_id The Spotify ID for the playlist.
 #'
 #' @export
 #'
@@ -44,8 +44,8 @@ get_playlist <- function(user_id, playlist_id,...){
 #'
 #' @references \href{https://developer.spotify.com/web-api/get-playlists-tracks/}{API documentation}
 #'
-#' @param user_id
-#' @param playlist_id
+#' @param user_id The user's Spotify user ID.
+#' @param playlist_id The Spotify ID for the playlist.
 #'
 #' @export
 #'
@@ -65,8 +65,10 @@ get_playlist_tracks <- function(user_id,playlist_id,...){
 #'
 #' @references \href{https://developer.spotify.com/web-api/create-playlist/}{API documentation}
 #'
-#' @param user_id
-#' @param name
+#' @param user_id The user's Spotify user ID.
+#' @param name Required. The name for the new playlist, for example "Your
+#'   Coolest Playlist". This name does not need to be unique; a user may have
+#'   several playlists with the same name.
 #'
 #' @export
 #'
@@ -88,9 +90,13 @@ create_playlist <- function(user_id, name,...){
 #'
 #' @references \href{https://developer.spotify.com/web-api/add-tracks-to-playlist/}{API documentation}
 #'
-#' @param user_id
-#' @param name
-#' @param uris
+#' @param user_id The user's Spotify user ID.
+#' @param name Required. The name for the new playlist, for example "Your
+#'   Coolest Playlist". This name does not need to be unique; a user may have
+#'   several playlists with the same name.
+#' @param uris Optional. A comma-separated list of Spotify track URIs to add.
+#'   For example: uris=spotify:track:4iV5W9uYEdYUVa79Axb7Rh,
+#'   spotify:track:1301WleyT98MSxVHPZCA6M
 #'
 #' @export
 #'
@@ -122,9 +128,13 @@ add_tracks_to_playlist <- function(user_id, playlist_id, uris){
 #'
 #' @references \href{https://developer.spotify.com/web-api/remove-tracks-playlist/}{API documentation}
 #'
-#' @param user_id
-#' @param playlist_id
-#' @param uris
+#' @param user_id The user's Spotify user ID.
+#' @param name Required. The name for the new playlist, for example "Your
+#'   Coolest Playlist". This name does not need to be unique; a user may have
+#'   several playlists with the same name.
+#' @param uris Optional. A comma-separated list of Spotify track URIs to add.
+#'   For example: uris=spotify:track:4iV5W9uYEdYUVa79Axb7Rh,
+#'   spotify:track:1301WleyT98MSxVHPZCA6M
 #'
 #' @export
 #'

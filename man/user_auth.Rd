@@ -12,3 +12,7 @@ user_auth(cache = TRUE)
 \description{
 Authorize a user
 }
+\examples{
+set_tokens()
+user_auth()
+}

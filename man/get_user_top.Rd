@@ -5,7 +5,7 @@
 \title{Get a User’s Top Artists and Tracks
 Get the current user’s top artists or tracks based on calculated affinity.}
 \usage{
-get_user_top(type = c("artists", "tracks"))
+get_user_top(type = c("artists", "tracks"), ...)
 }
 \arguments{
 \item{type}{}

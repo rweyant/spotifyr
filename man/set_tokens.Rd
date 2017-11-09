@@ -9,3 +9,6 @@ set_tokens()
 \description{
 Set tokens in global environment
 }
+\examples{
+set_tokens()
+}

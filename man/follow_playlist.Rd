@@ -2,17 +2,24 @@
 % Please edit documentation in R/follow.R
 \name{follow_playlist}
 \alias{follow_playlist}
-\title{Follow a Playlist
-Add the current user as a follower of a playlist}
+\title{Follow a Playlist Add the current user as a follower of a playlist}
 \usage{
 follow_playlist(owner_id, playlist_id, public = TRUE, ...)
 }
 \arguments{
-\item{public}{}
+\item{owner_id}{The Spotify user ID of the person who owns the playlist.}
+
+\item{playlist_id}{The Spotify ID of the playlist. Any playlist can be
+followed, regardless of its public/private status, as long as you know its
+playlist ID.}
+
+\item{public}{Optional, default true. If true the playlist will be included
+in user's public playlists, if false it will remain private. To be able to
+follow playlists privately, the user must have granted the
+playlist-modify-private scope.}
 }
 \description{
-Follow a Playlist
-Add the current user as a follower of a playlist
+Follow a Playlist Add the current user as a follower of a playlist
 }
 \examples{
 set_tokens()
@@ -20,5 +27,6 @@ user_auth()
 follow_playlist(owner_id = 'jmperezperez', playlist_id = '2v3iNvBX8Ay1Gt2uXtUKUT')
 }
 \references{
-\href{https://developer.spotify.com/web-api/follow-playlist/}{API documentation}
+\href{https://developer.spotify.com/web-api/follow-playlist/}{API
+  documentation}
 }

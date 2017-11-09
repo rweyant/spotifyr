@@ -8,7 +8,9 @@ Add the current user as a follower of one or more artists or other Spotify users
 follow(ids, type = c("artist", "user"), ...)
 }
 \arguments{
-\item{type}{}
+\item{ids}{Optional. A comma-separated list of the artist or the user Spotify IDs.}
+
+\item{type}{Required. The ID type: either artist or user.}
 }
 \description{
 Follow Artists or Users

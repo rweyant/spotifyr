@@ -1,5 +1,6 @@
-#' Get an Artist
-#' Get Spotify catalog information for a single artist identified by their unique Spotify ID.
+#' @title Get an Artist
+#'
+#' @description Get Spotify catalog information for a single artist identified by their unique Spotify ID.
 #'
 #' @references \href{https://developer.spotify.com/web-api/get-artist/}{API documentation}
 #'
@@ -7,16 +8,19 @@
 #'
 #' @param id Required. The Spotify ID for the album
 #'
+#' @return Spotify Artist object
+#'
 #' @examples
 #' set_tokens()
 #' get_artist('42ZTPxJukaCRQuMjmxVJo4')
 get_artist <- function(id, ...){
-  response <- GET(url = glue('{ARTIST_URL}/{id}'),
-                  add_headers(Authorization = glue('Bearer {access_token}')))
+  response <- httr::GET(url = glue('{ARTIST_URL}/{id}'),
+                        add_headers(Authorization = glue('Bearer {access_token}')))
   get_response_content(response)
 }
 
 #' Get Several Artists
+#'
 #' Get Spotify catalog information for several artists based on their Spotify IDs.
 #'
 #' @references \href{https://developer.spotify.com/web-api/get-several-artists/}{API documentation}
@@ -27,11 +31,11 @@ get_artist <- function(id, ...){
 #'
 #' @examples
 #' get_artists(c('0oSGxfWSnnOXhD2fKuz2Gy','3dBVyJ7JuOMt4GE9607Qin'))
-get_artists <- function(ids){
-  query <- list(ids = paste(ids, collapse=','))
-  response <- GET(url = ARTIST_URL,
-                  add_headers(Authorization = glue('Bearer {access_token}')),
-                  query = query)
+get_artists <- function(ids, ...){
+  query <- list(ids = paste(ids, collapse=','), ...)
+  response <- httr::GET(url = ARTIST_URL,
+                        add_headers(Authorization = glue('Bearer {access_token}')),
+                        query = query)
   get_response_content(response)
 }
 
@@ -50,9 +54,9 @@ get_artists <- function(ids){
 #' set_tokens()
 #' get_artist_albums('1vCWHaC5f2uS3yhpwWbIA6')
 get_artist_albums <- function(id, ...){
-  response <- GET(url = glue('{ARTIST_URL}/{id}/albums'),
-                  add_headers(Authorization = glue('Bearer {access_token}')),
-                  query = list(...))
+  response <- httr::GET(url = glue('{ARTIST_URL}/{id}/albums'),
+                        add_headers(Authorization = glue('Bearer {access_token}')),
+                        query = list(...))
 
   get_response_content(response)
 }
@@ -71,9 +75,9 @@ get_artist_albums <- function(id, ...){
 #' get_artist_toptracks('1vCWHaC5f2uS3yhpwWbIA6')
 #' get_artist_toptracks('1vCWHaC5f2uS3yhpwWbIA6', 'DE')
 get_artist_toptracks <- function(id, country = 'US'){
-  response <- GET(url = glue('{ARTIST_URL}/{id}/top-tracks'),
-                  add_headers(Authorization = glue('Bearer {access_token}')),
-                  query = list(country = country))
+  response <- httr::GET(url = glue('{ARTIST_URL}/{id}/top-tracks'),
+                        add_headers(Authorization = glue('Bearer {access_token}')),
+                        query = list(country = country))
   get_response_content(response)
 }
 
@@ -91,9 +95,9 @@ get_artist_toptracks <- function(id, country = 'US'){
 #' set_tokens()
 #' get_artist_relatedartists('1vCWHaC5f2uS3yhpwWbIA6')
 get_artist_relatedartists <- function(id, ...){
-  response <- GET(url = glue('{ARTIST_URL}/{id}/related-artists'),
-                  add_headers(Authorization = glue('Bearer {access_token}')),
-                  query = list(...))
+  response <- httr::GET(url = glue('{ARTIST_URL}/{id}/related-artists'),
+                        add_headers(Authorization = glue('Bearer {access_token}')),
+                        query = list(...))
   get_response_content(response)
 }
 

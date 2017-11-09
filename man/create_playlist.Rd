@@ -8,7 +8,11 @@ Create a playlist for a Spotify user. (The playlist will be empty until you add 
 create_playlist(user_id, name, ...)
 }
 \arguments{
-\item{name}{}
+\item{user_id}{The user's Spotify user ID.}
+
+\item{name}{Required. The name for the new playlist, for example "Your
+Coolest Playlist". This name does not need to be unique; a user may have
+several playlists with the same name.}
 }
 \description{
 Create a Playlist

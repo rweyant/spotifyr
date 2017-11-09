@@ -2,17 +2,19 @@
 % Please edit documentation in R/follow.R
 \name{unfollow_playlist}
 \alias{unfollow_playlist}
-\title{Unfollow a Playlist
-Remove the current user as a follower of a playlist.}
+\title{Unfollow a Playlist Remove the current user as a follower of a playlist.}
 \usage{
 unfollow_playlist(owner_id, playlist_id, ...)
 }
 \arguments{
-\item{playlist_id}{}
+\item{owner_id}{The Spotify user ID of the person who owns the playlist.}
+
+\item{playlist_id}{The Spotify ID of the playlist. Any playlist can be
+followed, regardless of its public/private status, as long as you know its
+playlist ID.}
 }
 \description{
-Unfollow a Playlist
-Remove the current user as a follower of a playlist.
+Unfollow a Playlist Remove the current user as a follower of a playlist.
 }
 \examples{
 set_tokens()
@@ -20,5 +22,6 @@ user_auth()
 unfollow_playlist(owner_id = 'jmperezperez', playlist_id = '2v3iNvBX8Ay1Gt2uXtUKUT')
 }
 \references{
-\href{https://developer.spotify.com/web-api/unfollow-playlist/}{API documentation}
+\href{https://developer.spotify.com/web-api/unfollow-playlist/}{API
+  documentation}
 }

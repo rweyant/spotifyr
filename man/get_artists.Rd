@@ -2,16 +2,14 @@
 % Please edit documentation in R/artists.R
 \name{get_artists}
 \alias{get_artists}
-\title{Get Several Artists
-Get Spotify catalog information for several artists based on their Spotify IDs.}
+\title{Get Several Artists}
 \usage{
-get_artists(ids)
+get_artists(ids, ...)
 }
 \arguments{
 \item{ids}{Required. A comma-separated list of the Spotify IDs for the artists. Maximum: 50 IDs.}
 }
 \description{
-Get Several Artists
 Get Spotify catalog information for several artists based on their Spotify IDs.
 }
 \examples{

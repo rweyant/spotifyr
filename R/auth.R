@@ -17,6 +17,8 @@ set_credentials <- function(client_id, client_secret, client_redirect_uri){
 #' This function looks for client_id and client_secret in the global environment
 #'
 #' @export
+#' @examples
+#' get_tokens()
 get_tokens <- function(){
   response <- POST(url = TOKENS_URL,
                    accept_json(),
@@ -31,7 +33,7 @@ get_tokens <- function(){
 #'
 #' @export
 #'
-#' @example
+#' @examples
 #' set_tokens()
 set_tokens <- function() {
   tokens <- get_tokens()
@@ -44,7 +46,7 @@ set_tokens <- function() {
 #'
 #' @export
 #'
-#' @example
+#' @examples
 #' set_tokens()
 #' user_auth()
 user_auth <- function(cache = TRUE) {

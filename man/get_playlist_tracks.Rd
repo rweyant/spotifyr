@@ -8,7 +8,9 @@ Get full details of the tracks of a playlist owned by a Spotify user.}
 get_playlist_tracks(user_id, playlist_id, ...)
 }
 \arguments{
-\item{playlist_id}{}
+\item{user_id}{The user's Spotify user ID.}
+
+\item{playlist_id}{The Spotify ID for the playlist.}
 }
 \description{
 Get a Playlist’s Tracks
