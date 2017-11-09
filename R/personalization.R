@@ -12,10 +12,11 @@
 #' user_auth()
 #' get_user_top(type='artists')
 #' get_user_top(type='tracks')
-get_user_top <- function(type=c('artists', 'tracks')){
+get_user_top <- function(type=c('artists', 'tracks'), ...){
   type <- match.arg(type)
-  response <- GET(url = glue('{TOP_URL}/{type}'),
-                  config(token = user_token))
+  response <- httr::GET(url = glue('{TOP_URL}/{type}'),
+                        config(token = user_token),
+                        query = list(...))
 
   get_response_content(response)
 }
@@ -32,8 +33,8 @@ get_user_top <- function(type=c('artists', 'tracks')){
 #' user_auth()
 #' get_user_recently_played()
 get_user_recently_played <- function(){
-  response <- GET(url = glue('{PLAYER_ENDPOINT}/recently-played'),
-                  config(token = user_token))
+  response <- httr::GET(url = glue('{PLAYER_ENDPOINT}/recently-played'),
+                        config(token = user_token))
   get_response_content(response)
 }
 

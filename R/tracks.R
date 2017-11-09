@@ -11,9 +11,8 @@
 #' set_tokens()
 #' get_track(id='3n3Ppam7vgaVa1iaRUc9Lp')
 get_track <- function(id,...){
-
-  response <- GET(glue('{TRACKS_URL}/{id}'),
-                  add_headers(Authorization = glue('Bearer {access_token}')))
+  response <- httr::GET(glue('{TRACKS_URL}/{id}'),
+                        add_headers(Authorization = glue('Bearer {access_token}')))
   get_response_content(response)
 
 }
@@ -33,9 +32,9 @@ get_track <- function(id,...){
 #' get_tracks(ids=c('3n3Ppam7vgaVa1iaRUc9Lp', '3twNvmDtFQtAd5gMKedhLD'))
 get_tracks <- function(ids,...){
   query <- list(ids = paste(ids, collapse = ','), ...)
-  response <- GET(TRACKS_URL,
-                  add_headers(Authorization = glue('Bearer {access_token}')),
-                  query = query)
+  response <- httr::GET(TRACKS_URL,
+                        add_headers(Authorization = glue('Bearer {access_token}')),
+                        query = query)
   get_response_content(response)
 
 }
@@ -54,8 +53,8 @@ get_tracks <- function(ids,...){
 #' set_tokens()
 #' get_track_audio_analysis(id='3n3Ppam7vgaVa1iaRUc9Lp')
 get_track_audio_analysis <- function(id, ...){
-  response <- GET(glue('{AUDIO_ANALYSIS_URL}/{id}'),
-                  add_headers(Authorization = glue('Bearer {access_token}')))
+  response <- httr::GET(glue('{AUDIO_ANALYSIS_URL}/{id}'),
+                        add_headers(Authorization = glue('Bearer {access_token}')))
   get_response_content(response)
 
 }
@@ -74,8 +73,8 @@ get_track_audio_analysis <- function(id, ...){
 #' set_tokens()
 #' get_track_audio_features(id='3n3Ppam7vgaVa1iaRUc9Lp')
 get_track_audio_features <- function(id, ...){
-  response <- GET(glue('{AUDIO_FEATURES_URL}/{id}'),
-                  add_headers(Authorization = glue('Bearer {access_token}')))
+  response <- httr::GET(glue('{AUDIO_FEATURES_URL}/{id}'),
+                        add_headers(Authorization = glue('Bearer {access_token}')))
   get_response_content(response)
 }
 
@@ -94,8 +93,8 @@ get_track_audio_features <- function(id, ...){
 #' get_tracks_audio_features(ids=c('3n3Ppam7vgaVa1iaRUc9Lp', '3twNvmDtFQtAd5gMKedhLD'))
 get_tracks_audio_features <- function(ids, ...){
   query <- list(ids = paste(ids, collapse = ','), ...)
-  response <- GET(AUDIO_FEATURES_URL,
-                  add_headers(Authorization = glue('Bearer {access_token}')),
-                  query = query)
+  response <- httr::GET(AUDIO_FEATURES_URL,
+                        add_headers(Authorization = glue('Bearer {access_token}')),
+                        query = query)
   get_response_content(response)
 }
