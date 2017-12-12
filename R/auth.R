@@ -9,8 +9,6 @@ set_credentials <- function(client_id, client_secret){
   # TODO: change to environment variables
   Sys.setenv('SPOTIFY_CLIENT' = client_id)
   Sys.setenv('SPOTIFY_SECRET' = client_secret)
-  # assign('client_id', client_id, envir = .GlobalEnv)
-  # assign('client_secret', client_secret, envir=.GlobalEnv)
   # assign('client_redirect_uri', client_redirect_uri, envir=.GlobalEnv)
 }
 
