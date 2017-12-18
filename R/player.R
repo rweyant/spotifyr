@@ -20,6 +20,8 @@ get_user_devices <- function(){
 #'
 #' @references \href{https://developer.spotify.com/web-api/get-information-about-the-users-current-playback/}{API documentation}
 #'
+#' @export
+#'
 #' @examples
 #' set_tokens()
 #' user_auth()
@@ -34,6 +36,8 @@ get_user_playback <- function(){
 #' Get the object currently being played on the user’s Spotify account.
 #'
 #' @references \href{https://developer.spotify.com/web-api/get-the-users-currently-playing-track/}{API documentation}
+#'
+#' @export
 #'
 #' @examples
 #' set_tokens()
@@ -126,6 +130,7 @@ skip_user_playback_next <- function(device_id = NULL){
   response <- POST(url = glue('{PLAYER_URL}/next'),
                   config(token = user_token))
   get_response_content(response)
+  invisible()
 }
 
 #' Skip User’s Playback To Previous Track

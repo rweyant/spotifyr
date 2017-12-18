@@ -4,7 +4,7 @@
 \alias{set_credentials}
 \title{Set credentials to be accessed by all functions}
 \usage{
-set_credentials(client_id, client_secret, client_redirect_uri)
+set_credentials(client_id, client_secret)
 }
 \arguments{
 \item{client_id}{the client ID given from Spotify}
